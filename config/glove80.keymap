@@ -288,7 +288,6 @@
         ZMK_MACRO(es_caret,
             wait-ms: <1>;
             tap-ms: <1>;
-            wait-ms = <0>;
             bindings = <&kp LS(LBKT)>
                 , <&kp SPACE>;
         )
