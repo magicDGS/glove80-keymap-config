@@ -429,7 +429,7 @@
             &kp GRAVE                   &kp Q  &HRM_left_ring2 RALT W                    &kp E                    &kp R   &kp T                                                                          &kp Y                     &kp U                     &kp I  &HRM_right_ring2 RALT O                       &kp P              &kp BSLH
            &caps_word  &HRM_left_pinky LGUI A  &HRM_left_ring1 LALT S  &HRM_left_middy LSHFT D  &HRM_left_index LCTRL F   &kp G                                                                          &kp H  &HRM_right_index RCTRL J  &HRM_right_middy RSHFT K  &HRM_right_ring1 LALT L  &HRM_right_pinky RGUI SEMI               &kp SQT
             &sk LSHFT                   &kp Z                   &kp X                    &kp C                    &kp V   &kp B        &kp ESC   &kp UP  &kp DOWN  &kp LEFT  &kp RIGHT         &kp RET   &kp N                     &kp M                 &kp COMMA                  &kp DOT                    &kp FSLH             &sk RSHFT
- &magic LAYER_Magic 0               &kp LCTRL                &kp LALT                 &kp LGUI          &kp NON_US_BSLH          &kp BSPC  &kp DEL    &lower    &lower    &kp TAB  &kp 2 SPACE                          &kp LBKT                  &kp RBKT                 &kp RALT                   &kp RCTRL  &magic LAYER_Magic 0
+ &magic LAYER_Magic 0               &kp LCTRL                &kp LALT                 &kp LGUI          &kp NON_US_BSLH          &kp BSPC  &kp DEL    &lower    &lower    &kp TAB  &kp SPACE                          &kp LBKT                  &kp RBKT                 &kp RALT                   &kp RCTRL  &magic LAYER_Magic 0
             >;
         };
 
