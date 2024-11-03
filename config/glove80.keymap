@@ -274,22 +274,19 @@
         ZMK_MACRO(es_grave,
             wait-ms: <1>;
             tap-ms: <1>;
-            bindings = <&kp LBKT>
-                , <&kp SPACE>;
+            bindings = <&kp LBKT &kp SPACE>;
         )
         // ~ (es)
         ZMK_MACRO(es_tilde,
             wait-ms: <1>;
             tap-ms: <1>;
-            bindings = <&kp RA(N4)>
-                , <&kp SPACE>;
+            bindings = <&kp RA(N4) &kp SPACE>;
         )
         // ^ (es)
         ZMK_MACRO(es_caret,
             wait-ms: <1>;
             tap-ms: <1>;
-            bindings = <&kp LS(LBKT)>
-                , <&kp SPACE>;
+            bindings = <&kp LS(LBKT) &kp SPACE>;
         )
         // FUNCTIONAL SWITCHES
         // Mod+Tab application switcher - Glorious Engrammer
