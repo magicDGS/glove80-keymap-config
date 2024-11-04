@@ -269,25 +269,8 @@
 /* Automatically generated macro definitions */
 / {
     macros {
-        // MACROS FOR SPANISH SYMBOLS
-        // ` (es)
-        ZMK_MACRO(es_grave,
-            wait-ms: <1>;
-            tap-ms: <1>;
-            bindings = <&kp LBKT &kp SPACE>;
-        )
-        // ~ (es)
-        ZMK_MACRO(es_tilde,
-            wait-ms: <1>;
-            tap-ms: <1>;
-            bindings = <&kp RA(N4) &kp SPACE>;
-        )
-        // ^ (es)
-        ZMK_MACRO(es_caret,
-            wait-ms: <1>;
-            tap-ms: <1>;
-            bindings = <&kp LS(LBKT) &kp SPACE>;
-        )
+        // TODO: MACROS FOR SPANISH SYMBOLS
+        
         // FUNCTIONAL SWITCHES
         // Mod+Tab application switcher - Glorious Engrammer
         mod_tab: mod_tab_switcher {
