@@ -23,6 +23,15 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Sunak
   - Add GASC Home Row Mods (HRM) implemented with the same strategy as the [Tailorkey Zero layout] version 1.0g
   - Add also a HRM for AltGr on the W/O to support more Spanish symbols (as [Sunaku's layout] version 38)
 
+- Cursor Layer:
+
+  - Same as [Sunaku's layout] version 38 (without macros for selection)
+  - Toggle on the same thumb cluster as [Sunaku's layout] version 38
+
+- Lower Layer:
+
+  - Toggle in the same thumb/layer activation position the layer lock (as [Sunaku's layout] version 38)
+
 - Magic Layer:
 
   - Added a go-to layer on the same position as the RGB is located as [Sunaku's layout] version 38

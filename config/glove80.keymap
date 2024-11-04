@@ -22,8 +22,9 @@
 
 /* Automatically generated layer name #define */
 #define LAYER_Base 0
-#define LAYER_Lower 1
-#define LAYER_Magic 2
+#define LAYER_Cursor 1
+#define LAYER_Lower 2
+#define LAYER_Magic 3
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -481,7 +482,18 @@
             &kp GRAVE                   &kp Q  &HRM_left_ring2 RALT W                    &kp E                    &kp R   &kp T                                                                          &kp Y                     &kp U                     &kp I  &HRM_right_ring2 RALT O                       &kp P              &kp BSLH
            &caps_word  &HRM_left_pinky LGUI A  &HRM_left_ring1 LALT S  &HRM_left_middy LSHFT D  &HRM_left_index LCTRL F   &kp G                                                                          &kp H  &HRM_right_index RCTRL J  &HRM_right_middy RSHFT K  &HRM_right_ring1 LALT L  &HRM_right_pinky RGUI SEMI               &kp SQT
             &sk LSHFT                   &kp Z                   &kp X                    &kp C                    &kp V   &kp B        &kp ESC   &kp UP  &kp DOWN  &kp LEFT  &kp RIGHT         &kp RET   &kp N                     &kp M                 &kp COMMA                  &kp DOT                    &kp FSLH             &sk RSHFT
- &magic LAYER_Magic 0               &kp LCTRL                &kp LALT                 &kp LGUI          &kp NON_US_BSLH          &kp BSPC  &kp DEL    &lower    &lower    &kp TAB  &kp SPACE                          &kp LBKT                  &kp RBKT                 &kp RALT                   &kp RCTRL  &magic LAYER_Magic 0
+ &magic LAYER_Magic 0               &kp LCTRL                &kp LALT                 &kp LGUI          &kp NON_US_BSLH          &thumb LAYER_Cursor BSPC  &kp DEL    &lower    &lower    &kp TAB  &kp SPACE                          &kp LBKT                  &kp RBKT                 &kp RALT                   &kp RCTRL  &magic LAYER_Magic 0
+            >;
+        };
+
+        layer_Cursor {
+            bindings = <
+     &none          &none      &none      &none      &none                                                                                                  &none          &none      &none      &none        &none
+   &kp ESC        &kp RET  &kp SPACE    &kp TAB    &kp DEL    &kp INS                                                                          &kp INS    &kp DEL        &kp TAB  &kp SPACE    &kp RET      &kp ESC
+ &kp LC(E)      &sk LSHFT  &kp LC(Y)  &kp LC(Z)   &kp BSPC  &kp LC(X)                                                                        &kp LC(X)   &kp BSPC      &kp LC(Z)  &kp LC(Y)  &sk RSHFT    &kp LC(E)
+ &kp LC(L)       &kp LGUI   &kp LALT  &kp LSHFT  &kp LCTRL  &kp LC(C)                                                                        &kp LC(C)   &kp LEFT         &kp UP   &kp DOWN  &kp RIGHT    &kp LC(L)
+ &kp LC(J)      &kp LC(A)      &none      &none  &kp LC(F)  &kp LC(V)  &mod_tab LALT   &mod_tab LGUI  &kp TAB  &select_none   &none   &none  &kp LC(V)   &kp HOME      &kp PG_UP  &kp PG_DN    &kp END    &kp LC(J)
+ &kp LC(H)  &kp LC(LS(G))      &none      &none  &kp LC(G)                     &none  &mod_tab LCTRL   &tog LAYER_Cursor     &kp LC(A)   &none   &none             &kp LC(F)  &kp LC(LS(G))  &kp LC(G)  &kp LC(H)  &kp LG(DOT)
             >;
         };
 
@@ -492,14 +504,14 @@
                &trans         &none           &none    &kp UP_ARROW            &none    &kp END                                                  &kp RIGHT_PARENTHESIS   &kp KP_N7     &kp KP_N8     &kp KP_N9     &kp KP_MINUS   &kp SCROLLLOCK
                &trans         &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                            &kp PERCENT   &kp KP_N4     &kp KP_N5     &kp KP_N6      &kp KP_PLUS            &none
                &trans     &kp K_APP           &none         &kp F11          &kp F12  &kp PG_DN  &trans  &trans   &to 0  &trans  &trans  &trans              &kp COMMA   &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER           &trans
- &magic LAYER_Magic 0      &kp CAPS         &kp INS         &kp F11          &kp F12             &trans  &trans  &trans  &trans  &trans  &trans                          &kp KP_N0     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER           &trans
+ &magic LAYER_Magic 0      &kp CAPS         &kp INS         &kp F11          &kp F12             &tog LAYER_Cursor  &trans  &trans  &trans  &trans  &trans                          &kp KP_N0     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER           &trans
             >;
         };
 
         layer_Magic {
             bindings = <
   &bt BT_CLR            &none            &none            &none            &none                                                                                  &none   &none   &none   &none  &bt BT_CLR_ALL
-       &to 0            &to 1            &to 2            &none            &none            &none                                                         &none   &none   &none   &none   &none           &none
+       &to 0            &to 1            &to 2            &to 3            &none            &none                                                         &none   &none   &none   &none   &none           &none
        &none  &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                         &none   &none   &none   &none   &none           &none
  &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                         &none   &none   &none   &none   &none     &bootloader
   &sys_reset            &none            &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none   &none      &sys_reset
