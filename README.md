@@ -28,6 +28,11 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Glori
   - Same as [Glorious Engrammer layout] version 38 (without macros for selection)
   - Toggle on the same thumb cluster as [Glorious Engrammer layout] version 38
 
+- Number Layer:
+
+  - Same as [Glorious Engrammer layout] version 38 (without transparent keys, vim specifics and select macros)
+  - Toggle on the same thumb cluster as [Glorious Engrammer layout] version 38
+
 - Lower Layer:
 
   - Toggle in the same thumb/layer activation position the layer lock (as [Glorious Engrammer layout] version 38)
