@@ -23,6 +23,10 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Sunak
   - Add GASC Home Row Mods (HRM) implemented with the same strategy as the [Tailorkey Zero layout] version 1.0g
   - Add also a HRM for AltGr on the W/O to support more Spanish symbols (as [Sunaku's layout] version 38)
 
+- Magic Layer:
+
+  - Added a go-to layer on the same position as the RGB is located as [Sunaku's layout] version 38
+
 - Removed the Factory layer
 
 - GitHub Actions build with west [zmk last `main`workflow](https://github.com/zmkfirmware/zmk/blob/main/.github/workflows/build.yml)
