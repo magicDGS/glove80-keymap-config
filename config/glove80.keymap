@@ -270,6 +270,12 @@
 / {
     macros {
         // TODO: MACROS FOR SPANISH SYMBOLS
+        // ` (es)
+        ZMK_MACRO(es_grave,
+            wait-ms = <1>;
+            tap-ms = <1>;
+            bindings = <&kp LBKT &kp SPACE>;
+        )
         
         // FUNCTIONAL SWITCHES
         // Mod+Tab application switcher - Glorious Engrammer
