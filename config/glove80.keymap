@@ -286,7 +286,7 @@
         ZMK_MACRO(es_caret,
             wait-ms = <1>;
             tap-ms = <1>;
-            bindings = <&kp RA(LBKT) &kp SPACE>;
+            bindings = <&kp LS(LBKT) &kp SPACE>;
         )
 
         // FUNCTIONAL SWITCHES
