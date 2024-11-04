@@ -282,6 +282,12 @@
             tap-ms = <1>;
             bindings = <&kp RA(N4) &kp SPACE>;
         )
+        // ^ (es)
+        ZMK_MACRO(es_caret,
+            wait-ms = <1>;
+            tap-ms = <1>;
+            bindings = <&kp RA(LBKT) &kp SPACE>;
+        )
 
         // FUNCTIONAL SWITCHES
         // Mod+Tab application switcher - Glorious Engrammer
