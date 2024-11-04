@@ -276,7 +276,13 @@
             tap-ms = <1>;
             bindings = <&kp LBKT &kp SPACE>;
         )
-        
+        // ~ (es)
+        ZMK_MACRO(es_tilde,
+            wait-ms = <1>;
+            tap-ms = <1>;
+            bindings = <&kp RA(N4) &kp SPACE>;
+        )
+
         // FUNCTIONAL SWITCHES
         // Mod+Tab application switcher - Glorious Engrammer
         mod_tab: mod_tab_switcher {
