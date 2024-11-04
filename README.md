@@ -39,6 +39,12 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Glori
   - Toggle on the same thumb cluster as [Glorious Engrammer layout] version 38
   - Some functions are not working on Windows
 
+- Symbol Layer:
+
+  - Same as [Glorious Engrammer layout] version 38 (some symbols not included or shift-behavior not implemented)
+  - Toggle on the same thumb cluster as [Glorious Engrammer layout] version 38
+  - Uses macros for some symbols to ensure that the symbol appears on the first key press
+
 - Lower Layer:
 
   - Toggle in the same thumb/layer activation position the layer lock (as [Glorious Engrammer layout] version 38)
