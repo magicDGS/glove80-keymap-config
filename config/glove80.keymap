@@ -20,6 +20,9 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 
+// TODO: REMOVE NATIVE MACROS TO USE THE NODEFREE ZMK_HELPERS IMPLEMENTATION
+// TODO: to update stepwise, keep native behavior, as it is overriden
+#define ZMK_HELPERS_KEEP_NATIVE 1
 #include "zmk-helpers/helper.h"
 
 /* LAYERS */
@@ -264,9 +267,6 @@
 #define POS_RH_C6R5 63
 #define POS_RH_C6R6 79
 
-// TODO: REMOVE NATIVE MACROS TO USE THE NODEFREE ZMK_HELPERS IMPLEMENTATION
-// TODO: to update stepwise, keep native behavior, as it is overriden
-#define ZMK_HELPERS_KEEP_NATIVE 1
 /* Automatically generated macro definitions */
 / {
     macros {
