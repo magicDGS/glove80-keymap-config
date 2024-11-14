@@ -20,23 +20,22 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 
-/* Automatically generated layer name #define */
-#define LAYER_Base 0
-#define LAYER_Cursor 1
-#define LAYER_Number 2
-#define LAYER_Function 3
-#define LAYER_Symbol 4
-#define LAYER_Lower 5
-#define LAYER_Magic 6
+#include "zmk-helpers/helper.h"
 
-/* To deal with the situation where there is no Lower layer, to keep &lower happy */
-#ifndef LAYER_Lower
-#define LAYER_Lower 0
-#endif
-
-/* Custom Device-tree */
-
-
+/* LAYERS */
+#define BASE 0
+/* Cursor */
+#define CUR 1
+/* Number */
+#define NUM 2
+/* Function */
+#define FN 3
+/* Symbol */
+#define SYM 4
+/* Lower (MoErgo) */
+#define LOW 5
+/* Magic (MoErgo) */
+#define MAG 6
 
 /* Glove80 system behavior & macros */
 / {
@@ -48,7 +47,7 @@
             label = "LAYER_TAP_DANCE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo LAYER_Lower>, <&to LAYER_Lower>;
+            bindings = <&mo LOW>, <&to LOW>;
         };
     };
 };
@@ -265,11 +264,9 @@
 #define POS_RH_C6R5 63
 #define POS_RH_C6R6 79
 
-/* Custom Defined Behaviors */
-/ {
-
-};
-
+// TODO: REMOVE NATIVE MACROS TO USE THE NODEFREE ZMK_HELPERS IMPLEMENTATION
+// TODO: to update stepwise, keep native behavior, as it is overriden
+#define ZMK_HELPERS_KEEP_NATIVE 1
 /* Automatically generated macro definitions */
 / {
     macros {
@@ -325,7 +322,7 @@
     behaviors {
 
         // Homerow Mod for the left index finger - TailorKey
-        HRM_left_index: HRM_left_index {
+        hml_i: hml_i {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <170>;
@@ -338,7 +335,7 @@
         };
 
         // Homerow Mod for the left middle finger - TailorKey
-        HRM_left_middy: HRM_left_middy {
+        hml_m: hml_m {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <210>;
@@ -351,7 +348,7 @@
         };
 
         // Homerow Mod for the left pinky - TailorKey
-        HRM_left_pinky: HRM_left_pinky {
+        hml_p: hml_p {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <260>;
@@ -364,7 +361,7 @@
         };
 
         // Homerow Mod for the left ring finger 1 - TailorKey
-        HRM_left_ring1: HRM_left_ring1 {
+        hml_r1: hml_r1 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <240>;
@@ -377,7 +374,7 @@
         };
 
         // Homerow Mod for the left ring finger 2 - TailorKey
-        HRM_left_ring2: HRM_left_ring2 {
+        hml_r2: hml_r2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <240>;
@@ -390,7 +387,7 @@
         };
 
         // Homerow Mod for the right index finger - TailorKey
-        HRM_right_index: HRM_right_index {
+        hmr_i: hmr_i {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <170>;
@@ -403,7 +400,7 @@
         };
 
         // Homerow Mod for the right middle finger - TailorKey
-        HRM_right_middy: HRM_right_middy {
+        hmr_m: hmr_m {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <210>;
@@ -416,7 +413,7 @@
         };
 
         // Homerow Mod for the right pinky - TailorKey
-        HRM_right_pinky: HRM_right_pinky {
+        hmr_p: hmr_p {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <260>;
@@ -429,7 +426,7 @@
         };
 
         // Homerow Mod for the right ring 1 - TailorKey
-        HRM_right_ring1: HRM_right_ring1 {
+        hmr_r1: hmr_r1 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <240>;
@@ -442,7 +439,7 @@
         };
 
         // Homerow Mod for the right ring 2 - TailorKey
-        HRM_right_ring2: HRM_right_ring2 {
+        hmr_r2: hmr_r2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <240>;
@@ -472,88 +469,116 @@
     };
 };
 
-/* Automatically generated keymap */
-/ {
-    keymap {
-        compatible = "zmk,keymap";
+/* Keymap */
+// TODO: replace for zmk helpers for key-labels GLV80_LAYER for better maintainance
+ZMK_LAYER(base,
+    //╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                                                                                                                          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮ 
+        &kp F1          &kp F2          &kp F3          &kp F4          &kp F5                                                                                                                                                     &kp F6          &kp F7          &kp F8          &kp F9           &kp F10
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╮                                                                                                          ╭───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp EQUAL       &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                                                                                                     &kp N6          &kp N7          &kp N8          &kp N9          &kp N0           &kp MINUS
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp GRAVE       &kp Q           &hml_r2 RALT W  &kp E           &kp R           &kp T                                                                                                                      &kp Y           &kp U           &kp I           &hmr_r2 RALT O  &kp P            &kp BSLH
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &caps_word      &hml_p LGUI A   &hml_r1 LALT S  &hml_m LSHFT D  &hml_i LCTRL F  &kp G                                                                                                                      &kp H           &hmr_i RCTRL J  &hmr_m RSHFT K  &hmr_r1 LALT L  &hmr_p RGUI SEMI &kp SQT
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|   ╭───────────────┬───────────────┬───────────────╮   ╭───────────────┬───────────────┬───────────────╮  ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &sk LSHFT       &kp Z           &kp X           &kp C           &kp V           &kp B               &thumb FN ESC   &kp UP          &kp DOWN            &kp LEFT        &kp RIGHT       &kp RET            &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH         &sk RSHFT
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╯   |───────────────┼───────────────┤───────────────|   |───────────────┼───────────────┤───────────────|  ╰───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &magic MAG 0    &kp LCTRL       &kp LALT        &kp LGUI        &kp NON_US_BSLH                     &thumb CUR BSPC &thumb NUM DEL  &lower              &lower          &kp TAB         &thumb SYM SPACE                    &kp LBKT       &kp RBKT        &kp RALT        &kp RCTRL        &magic MAG 0
+    //╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                   ╰───────────────┴───────────────┴───────────────╯   ╰───────────────┴───────────────┴───────────────╯                  ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
+);
 
+ZMK_LAYER(cur,
+    //╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                                                                                                                          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮ 
+        &none           &none           &none           &none           &none                                                                                                                                                      &none           &none           &none           &none           &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╮                                                                                                          ╭───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp ESC         &kp RET         &kp SPACE       &kp TAB         &kp DEL         &kp INS                                                                                                                    &kp INS         &kp DEL         &kp TAB         &kp SPACE       &kp RET         &kp ESC
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp LC(E)       &sk LSHFT       &kp LC(Y)       &kp LC(Z)       &kp BSPC        &kp LC(X)                                                                                                                  &kp LC(X)       &kp BSPC        &kp LC(Z)       &kp LC(Y)       &sk RSHFT       &kp LC(E)
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp LC(L)       &kp LGUI        &kp LALT        &kp LSHFT       &kp LCTRL       &kp LC(C)                                                                                                                  &kp LC(C)       &kp LEFT        &kp UP          &kp DOWN        &kp RIGHT       &kp LC(L)
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|   ╭───────────────┬───────────────┬───────────────╮   ╭───────────────┬───────────────┬───────────────╮  ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp LC(J)       &kp LC(A)       &none           &none           &kp LC(F)       &kp LC(V)           &mod_tab LALT   &mod_tab LGUI   &kp TAB             &select_none    &none           &none              &kp LC(V)       &kp HOME        &kp PG_UP       &kp PG_DN       &kp END         &kp LC(J)
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╯   |───────────────┼───────────────┤───────────────|   |───────────────┼───────────────┤───────────────|  ╰───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp LC(H)       &kp LC(LS(G))   &none           &none           &kp LC(G)                           &none           &mod_tab LCTRL  &tog CUR            &kp LC(A)       &none           &none                              &kp LC(F)       &kp LC(LS(G))   &kp LC(G)       &kp LC(H)       &kp LG(DOT)
+    //╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                   ╰───────────────┴───────────────┴───────────────╯   ╰───────────────┴───────────────┴───────────────╯                  ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
+);
 
-        layer_Base {
-            bindings = <
-               &kp F1                  &kp F2                  &kp F3                   &kp F4                   &kp F5                                                                                                           &kp F6                    &kp F7                   &kp F8                      &kp F9               &kp F10
-            &kp EQUAL                  &kp N1                  &kp N2                   &kp N3                   &kp N4  &kp N5                                                                         &kp N6                    &kp N7                    &kp N8                   &kp N9                      &kp N0             &kp MINUS
-            &kp GRAVE                   &kp Q  &HRM_left_ring2 RALT W                    &kp E                    &kp R   &kp T                                                                          &kp Y                     &kp U                     &kp I  &HRM_right_ring2 RALT O                       &kp P              &kp BSLH
-           &caps_word  &HRM_left_pinky LGUI A  &HRM_left_ring1 LALT S  &HRM_left_middy LSHFT D  &HRM_left_index LCTRL F   &kp G                                                                          &kp H  &HRM_right_index RCTRL J  &HRM_right_middy RSHFT K  &HRM_right_ring1 LALT L  &HRM_right_pinky RGUI SEMI               &kp SQT
-            &sk LSHFT                   &kp Z                   &kp X                    &kp C                    &kp V   &kp B        &thumb LAYER_Function ESC   &kp UP  &kp DOWN  &kp LEFT  &kp RIGHT         &kp RET   &kp N                     &kp M                 &kp COMMA                  &kp DOT                    &kp FSLH             &sk RSHFT
- &magic LAYER_Magic 0               &kp LCTRL                &kp LALT                 &kp LGUI          &kp NON_US_BSLH          &thumb LAYER_Cursor BSPC  &thumb LAYER_Number DEL    &lower    &lower    &kp TAB  &thumb LAYER_Symbol SPACE                          &kp LBKT                  &kp RBKT                 &kp RALT                   &kp RCTRL  &magic LAYER_Magic 0
-            >;
-        };
+ZMK_LAYER(num,
+    //╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                                                                                                                          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮ 
+        &none           &none           &none           &none           &none                                                                                                                                                      &none           &none           &none           &none           &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╮                                                                                                          ╭───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp ESC         &kp RET         &kp SPACE       &kp TAB         &kp DEL         &kp INS                                                                                                                    &es_tilde       &es_caret       &kp RA(N3)      &kp LS(N4)      &kp LS(N1)      &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &sk LSHFT       &kp LC(Y)       &kp LC(Z)       &kp BSPC        &none                                                                                                                      &kp LS(N5)      &kp N7          &kp N8          &kp N9          &kp LS(DOT)     &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp KP_NUM      &kp LGUI        &kp LALT        &kp LSHFT       &kp LCTRL       &none                                                                                                                      &kp KP_PLUS     &kp N4          &kp N5          &kp N6          &kp KP_MINUS    &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|   ╭───────────────┬───────────────┬───────────────╮   ╭───────────────┬───────────────┬───────────────╮  ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &kp LC(A)       &none           &none           &kp LC(F)       &none               &none           &none           &none               &kp NON_US_BSLH &kp LS(NON_US_BSLH) &kp LS(N0)     &kp KP_MULTIPLY &kp N1          &kp N2          &kp N3          &kp KP_SLASH    &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╯   |───────────────┼───────────────┤───────────────|   |───────────────┼───────────────┤───────────────|  ╰───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &none           &none           &none           &none                               &none           &none           &tog NUM            &kp COMMA       &kp DOT         &kp N0                             &none           &none           &none           &none           &kp RA(N2)
+    //╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                   ╰───────────────┴───────────────┴───────────────╯   ╰───────────────┴───────────────┴───────────────╯                  ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
+);
 
-        layer_Cursor {
-            bindings = <
-     &none          &none      &none      &none      &none                                                                                                  &none          &none      &none      &none        &none
-   &kp ESC        &kp RET  &kp SPACE    &kp TAB    &kp DEL    &kp INS                                                                          &kp INS    &kp DEL        &kp TAB  &kp SPACE    &kp RET      &kp ESC
- &kp LC(E)      &sk LSHFT  &kp LC(Y)  &kp LC(Z)   &kp BSPC  &kp LC(X)                                                                        &kp LC(X)   &kp BSPC      &kp LC(Z)  &kp LC(Y)  &sk RSHFT    &kp LC(E)
- &kp LC(L)       &kp LGUI   &kp LALT  &kp LSHFT  &kp LCTRL  &kp LC(C)                                                                        &kp LC(C)   &kp LEFT         &kp UP   &kp DOWN  &kp RIGHT    &kp LC(L)
- &kp LC(J)      &kp LC(A)      &none      &none  &kp LC(F)  &kp LC(V)  &mod_tab LALT   &mod_tab LGUI  &kp TAB  &select_none   &none   &none  &kp LC(V)   &kp HOME      &kp PG_UP  &kp PG_DN    &kp END    &kp LC(J)
- &kp LC(H)  &kp LC(LS(G))      &none      &none  &kp LC(G)                     &none  &mod_tab LCTRL   &tog LAYER_Cursor     &kp LC(A)   &none   &none             &kp LC(F)  &kp LC(LS(G))  &kp LC(G)  &kp LC(H)  &kp LG(DOT)
-            >;
-        };
+ZMK_LAYER(fn,
+    //╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                                                                                                                          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮ 
+        &none           &none           &none           &none           &none                                                                                                                                                      &none           &none           &none           &none           &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╮                                                                                                          ╭───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp ESC         &kp RET         &kp SPACE       &kp TAB         &kp DEL         &kp INS                                                                                                                    &kp C_MEDIA_HOME &kp C_PLAY     &kp C_PREV      &kp C_NEXT      &kp C_STOP      &kp C_EJECT
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &sk LSHFT       &kp LC(Y)       &kp LC(Z)       &kp BSPC        &none                                                                                                                      &kp K_CALC      &kp F7          &kp F8          &kp F9          &kp F10         &kp F13
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp CAPS        &kp LGUI        &kp LALT        &kp LSHFT       &kp LCTRL       &none                                                                                                                      &kp K_WWW       &kp F4          &kp F5          &kp F6          &kp F11         &kp F14
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|   ╭───────────────┬───────────────┬───────────────╮   ╭───────────────┬───────────────┬───────────────╮  ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &kp LC(A)       &none           &none           &none           &none               &none           &none           &none               &kp C_PREV      &kp C_NEXT      &kp C_PP           &kp C_AL_FILES  &kp F1          &kp F2          &kp F3          &kp F12         &kp F15
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╯   |───────────────┼───────────────┤───────────────|   |───────────────┼───────────────┤───────────────|  ╰───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &none           &none           &none           &none                               &none           &none           &tog FN             &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP                       &kp C_BRI_MAX   &kp C_BRI_U     &kp C_BRI_DN    &kp C_BRI_MI    &kp C_BRI_AUTO
+    //╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                   ╰───────────────┴───────────────┴───────────────╯   ╰───────────────┴───────────────┴───────────────╯                  ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
+);
 
-        layer_Number {
-            bindings = <
-      &none      &none      &none      &none      &none                                                                                                          &none       &none       &none         &none       &none
-    &kp ESC    &kp RET  &kp SPACE    &kp TAB    &kp DEL  &kp INS                                                                                  &es_tilde  &es_caret  &kp RA(N3)  &kp LS(N4)    &kp LS(N1)       &none
-      &none  &sk LSHFT  &kp LC(Y)  &kp LC(Z)   &kp BSPC    &none                                                                                 &kp LS(N5)     &kp N7      &kp N8      &kp N9   &kp LS(DOT)       &none
- &kp KP_NUM   &kp LGUI   &kp LALT  &kp LSHFT  &kp LCTRL    &none                                                                                &kp KP_PLUS     &kp N4      &kp N5      &kp N6  &kp KP_MINUS       &none
-      &none  &kp LC(A)      &none      &none  &kp LC(F)    &none   &none   &none   &none  &kp NON_US_BSLH  &kp LS(NON_US_BSLH)  &kp LS(N0)  &kp KP_MULTIPLY     &kp N1      &kp N2      &kp N3  &kp KP_SLASH       &none
-      &none      &none      &none      &none      &none            &none   &none  &tog LAYER_Number        &kp COMMA              &kp DOT      &kp N0                       &none       &none       &none         &none  &kp RA(N2)
-            >;
-        };
+ZMK_LAYER(sym,
+    //╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                                                                                                                          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮ 
+        &none           &none           &none         &none                &none                                                                                                                                                   &none           &none           &none           &none           &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╮                                                                                                          ╭───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &es_grave       &kp LS(N8)      &kp LS(N9)      &kp LS(COMMA)   &kp COMMA                                                                                                                  &none           &none           &none           &none           &none           &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp LS(N1)      &kp RA(SQT)     &kp MINUS       &kp LS(N2)      &kp RA(BSLH)    &kp LS(MINUS)                                                                                                              &none           &kp LCTRL       &kp LSHFT       &kp LALT        &kp LGUI        &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp RA(N3)      &es_caret       &kp LS(N0)      &kp LS(FSLH)    &kp LS(N4)      &kp LS(RBKT)                                                                                                               &none           &kp BSPC        &kp TAB         &kp SPACE       &kp RET         &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|   ╭───────────────┬───────────────┬───────────────╮   ╭───────────────┬───────────────┬───────────────╮  ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &es_tilde       &kp NON_US_BSLH &kp RA(N1)      &kp FSLH        &kp LS(NON_US_BSLH) &kp LS(N7)      &kp RA(GRAVE)   &kp DOT         &kp LS(RBKT)        &none           &none           &none              &none           &kp DEL         &kp LS(TAB)     &none           &none           &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╯   |───────────────┼───────────────┤───────────────|   |───────────────┼───────────────┤───────────────|  ╰───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &kp RA(N2)      &kp LS(N6)      &kp RA(LBKT)    &kp RA(RBKT)    &kp RBKT                            &kp LS(N5)      &kp LS(DOT)     &kp LS(COMMA)       &tog SYM        &none           &none                              &none           &none           &none           &none           &none
+    //╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                   ╰───────────────┴───────────────┴───────────────╯   ╰───────────────┴───────────────┴───────────────╯                  ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
+);
 
-        layer_Function {
-            bindings = <
-    &none      &none      &none      &none      &none                                                                                                     &none         &none         &none          &none           &none
-  &kp ESC    &kp RET  &kp SPACE    &kp TAB    &kp DEL  &kp INS                                                                  &kp C_MEDIA_HOME     &kp C_PLAY    &kp C_PREV    &kp C_NEXT     &kp C_STOP     &kp C_EJECT
-    &none  &sk LSHFT  &kp LC(Y)  &kp LC(Z)   &kp BSPC    &none                                                                        &kp K_CALC         &kp F7        &kp F8        &kp F9        &kp F10         &kp F13
- &kp CAPS   &kp LGUI   &kp LALT  &kp LSHFT  &kp LCTRL    &none                                                                         &kp K_WWW         &kp F4        &kp F5        &kp F6        &kp F11         &kp F14
-    &none  &kp LC(A)      &none      &none      &none    &none   &none   &none   &none  &kp C_PREV    &kp C_NEXT      &kp C_PP    &kp C_AL_FILES         &kp F1        &kp F2        &kp F3        &kp F12         &kp F15
-    &none      &none      &none      &none      &none            &none   &none  &tog LAYER_Function  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &kp C_BRI_MAX  &kp C_BRI_UP  &kp C_BRI_DN  &kp C_BRI_MIN  &kp C_BRI_AUTO
-            >;
-        };
+ZMK_LAYER(low,
+    //╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                                                                                                                          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮ 
+        &kp C_BRI_DN    &kp C_BRI_UP    &kp C_PREV      &kp C_NEXT      &kp C_PP                                                                                                                                                   &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP    &none           &kp PAUSE_BREAK
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╮                                                                                                          ╭───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &trans          &none           &none           &none           &none           &kp HOME                                                                                                                    &kp LEFT_PARENTHESIS &kp KP_NUM &kp KP_EQUAL   &kp KP_SLASH    &kp KP_MULTIPLY &kp PRINTSCREEN
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &trans          &none           &none           &kp UP_ARROW    &none           &kp END                                                                                                                     &kp RIGHT_PARENTHESIS &kp KP_N7 &kp KP_N8      &kp KP_N9       &kp KP_MINUS    &kp SCROLLLOCK
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &trans          &none           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW &kp PG_UP                                                                                                                   &kp PERCENT    &kp KP_N4       &kp KP_N5       &kp KP_N6       &kp KP_PLUS     &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|   ╭───────────────┬───────────────┬───────────────╮   ╭───────────────┬───────────────┬───────────────╮  ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &trans          &kp K_APP       &none           &kp F11         &kp F12         &kp PG_DN           &tog FN        &trans           &to 0               &trans          &trans          &trans              &kp COMMA      &kp KP_N1       &kp KP_N2       &kp KP_N3       &kp KP_ENTER    &trans
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╯   |───────────────┼───────────────┤───────────────|   |───────────────┼───────────────┤───────────────|  ╰───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &magic MAG 0    &kp CAPS        &kp INS         &kp F11         &kp F12                             &tog CUR       &tog NUM         &trans              &trans          &trans          &tog SYM                           &kp KP_N0       &kp KP_N0       &kp KP_DOT      &kp KP_ENTER    &trans
+    //╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                   ╰───────────────┴───────────────┴───────────────╯   ╰───────────────┴───────────────┴───────────────╯                  ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
+);
 
-        layer_Symbol {
-            bindings = <
-      &none            &none         &none         &none                &none                                                                                                &none        &none      &none     &none   &none
-      &none        &es_grave    &kp LS(N8)    &kp LS(N9)        &kp LS(COMMA)      &kp COMMA                                                                      &none      &none        &none      &none     &none   &none
- &kp LS(N1)      &kp RA(SQT)     &kp MINUS    &kp LS(N2)         &kp RA(BSLH)  &kp LS(MINUS)                                                                      &none  &kp LCTRL    &kp LSHFT   &kp LALT  &kp LGUI   &none
- &kp RA(N3)        &es_caret    &kp LS(N0)  &kp LS(FSLH)           &kp LS(N4)   &kp LS(RBKT)                                                                      &none   &kp BSPC      &kp TAB  &kp SPACE   &kp RET   &none
-  &es_tilde  &kp NON_US_BSLH    &kp RA(N1)      &kp FSLH  &kp LS(NON_US_BSLH)     &kp LS(N7)  &kp RA(GRAVE)      &kp DOT   &kp LS(RBKT)   &none   &none   &none   &none    &kp DEL  &kp LS(TAB)      &none     &none   &none
- &kp RA(N2)       &kp LS(N6)  &kp RA(LBKT)  &kp RA(RBKT)             &kp RBKT                    &kp LS(N5)  &kp LS(DOT)  &kp LS(COMMA)  &tog LAYER_Symbol   &none   &none              &none        &none      &none     &none   &none
-            >;
-        };
-
-        layer_Lower {
-            bindings = <
-         &kp C_BRI_DN  &kp C_BRI_UP      &kp C_PREV      &kp C_NEXT         &kp C_PP                                                                                    &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP            &none  &kp PAUSE_BREAK
-               &trans         &none           &none           &none            &none   &kp HOME                                                   &kp LEFT_PARENTHESIS  &kp KP_NUM  &kp KP_EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
-               &trans         &none           &none    &kp UP_ARROW            &none    &kp END                                                  &kp RIGHT_PARENTHESIS   &kp KP_N7     &kp KP_N8     &kp KP_N9     &kp KP_MINUS   &kp SCROLLLOCK
-               &trans         &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                            &kp PERCENT   &kp KP_N4     &kp KP_N5     &kp KP_N6      &kp KP_PLUS            &none
-               &trans     &kp K_APP           &none         &kp F11          &kp F12  &kp PG_DN  &tog LAYER_Function  &trans   &to 0  &trans  &trans  &trans              &kp COMMA   &kp KP_N1     &kp KP_N2     &kp KP_N3     &kp KP_ENTER           &trans
- &magic LAYER_Magic 0      &kp CAPS         &kp INS         &kp F11          &kp F12             &tog LAYER_Cursor  &tog LAYER_Number  &trans  &trans  &trans  &tog LAYER_Symbol                          &kp KP_N0     &kp KP_N0    &kp KP_DOT     &kp KP_ENTER           &trans
-            >;
-        };
-
-        layer_Magic {
-            bindings = <
-  &bt BT_CLR            &none            &none            &none            &none                                                                                  &none   &none   &none   &none  &bt BT_CLR_ALL
-       &to 0            &to 1            &to 2            &to 3            &to 4            &to 5                                                         &to 6   &none   &none   &none   &none           &none
-       &none  &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                         &none   &none   &none   &none   &none           &none
- &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                         &none   &none   &none   &none   &none     &bootloader
-  &sys_reset            &none            &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none   &none      &sys_reset
-       &none            &none            &none            &none            &none                    &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none   &none           &none
-            >;
-        };
-
-    };
-};
+ZMK_LAYER(mag,
+    //╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮                                                                                                                                          ╭───────────────┬───────────────┬───────────────┬───────────────┬───────────────╮ 
+        &bt BT_CLR      &none           &none           &none           &none                                                                                                                                                      &none           &none           &none           &none           &bt BT_CLR_ALL
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╮                                                                                                          ╭───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &to 0           &to 1           &to 2           &to 3           &to 4           &to 5                                                                                                                      &to 6           &none           &none           &none           &none           &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_BRI &rgb_ug RGB_TOG                                                                                                            &none           &none           &none           &none           &none           &none
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|                                                                                                          ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &bootloader     &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_BRD &rgb_ug RGB_EFF                                                                                                            &none           &none           &none           &none           &none           &bootloader
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|   ╭───────────────┬───────────────┬───────────────╮   ╭───────────────┬───────────────┬───────────────╮  ├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &sys_reset      &none           &none           &none           &none           &none               &bt_2           &bt_3           &none               &none           &none           &none              &none           &none           &none           &none           &none           &sys_reset
+    //├───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────╯   |───────────────┼───────────────┤───────────────|   |───────────────┼───────────────┤───────────────|  ╰───────────────┼───────────────┼───────────────┼───────────────┼───────────────┤───────────────|
+        &none           &none           &none           &none           &none                               &bt_0           &bt_1           &out OUT_USB        &none           &none           &none                              &none           &none           &none           &none           &none
+    //╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯                   ╰───────────────┴───────────────┴───────────────╯   ╰───────────────┴───────────────┴───────────────╯                  ╰───────────────┴───────────────┴───────────────┴───────────────┴───────────────╯
+);
