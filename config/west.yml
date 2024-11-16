@@ -2,10 +2,18 @@ manifest:
   remotes:
     - name: moergo-sc
       url-base: https://github.com/moergo-sc
+    - name: joelspadin
+      url-base: https://github.com/joelspadin
+
   projects:
     - name: zmk
       remote: moergo-sc
       revision: main
       import: app/west.yml
+    - name: zmk-locales
+      remote: joelspadin
+      revision: main
+      path: modules/locales
+
   self:
     path: config
