@@ -1,0 +1,25 @@
+name: Draw ZMK keymap
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - config/**
+      - draw-config/config.yaml
+      - .github/workflows/draw-keymap.yml
+
+jobs:
+  draw:
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    permissions:
+      contents: write # allow workflow to commit to the repo
+    with:
+      keymap_patterns: config/*.keymap
+      config_path: draw-config/config.yaml
+      output_folder: docs/assets
+      fail_on_error: true
+      # TODO: change to do a commit on release workflow (use also commit_message parameter)
+      destination: artifact
+      # TODO: change to released version once it has left/right labels support
+      # TODO: also check if a version can be fixed instead of using a clone/branch to enable stable builds
+      install_branch: 90dfb4867aef10f7eb79348a0a9300c2f9e02aee
