@@ -59,8 +59,8 @@ draw_config:
       /* Large hold keys (bigger key-sides) */
       --large-hold-inner-size: 40px;
       --large-hold-inner-ry: 4;
-      --large-hold-inner-x: -20;
-      --large-hold-inner-y: -23;
+      --large-hold-inner-x: -20px;
+      --large-hold-inner-y: -23px;
     }
 
     /* Improve font-family to render properly the combining unicode symbols */
