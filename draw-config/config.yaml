@@ -28,7 +28,80 @@ draw_config:
     rel_h: 4
     rx: 4
     ry: 6
-  svg_extra_style: ""
+  svg_extra_style: |
+    /**
+    * Styles borrowed (with adjustments) from:
+    * - https://github.com/SethMilliken/zmk-config/blob/main/keymap_drawer.config.yaml
+    * - https://github.com/englmaxi/zmk-config/blob/master/keymap-drawer/config.yaml
+    **/
+
+    :root {
+      /* smaller font-size than the keymap-drawer default */
+      --font-size: 12px;
+
+      /* Color palerte */
+      --main-color: #CCCCCC;
+      --text-color: #000000;
+      --border-color: #000000;
+      --held-color: #D1C6E9;
+       
+      /* Default key colors */
+      --key-color: var(--main-color);
+      --key-border-color: var(--border-color);
+    }
+
+    /* Improve font-family to render properly the combining unicode symbols */
+    svg.keymap {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: var(--font-size);
+      fill: var(--text-color);
+    }
+    /* Use relative font-size for no main tap key label */
+    text.combo, text.hold, text.shifted, text.left, text.right {
+      font-size: 0.75em;
+    }
+    /* Shifted a bit bigger */
+    text.shifted {
+      font-size: 0.80em;
+      translate: 0 0.2em;
+    }
+
+    /* Reposition he AltGr labels as they are too close to the rect limit */
+    text.key.right {
+      /* Also move a bit above the main key label */
+      dominant-baseline: auto;
+      translate: -0.2em;
+    }
+
+    /* Reposition hold labels as they are too close to the key-side */
+    text.key.hold {
+      translate: 0 -0.5em;
+    }
+
+    /* Custom color setup on keys and sides */
+    .key {
+      /* Same computed color transform as in keymap-layout-editor */
+      --key-inner-color: lab(from var(--key-color) min(100, calc(l * 1.2)) a b);
+      --key-inner-stroke-color: lab(from var(--key-inner-color) min(80, l) a b);
+      rect {
+        fill: var(--key-color);
+        filter: none;
+      }
+      rect.key:not(.side) {
+        fill: var(--key-inner-color);
+        stroke: var(--key-inner-stroke-color);
+      }
+      /* Border color for keys */
+      rect.key.side {
+        stroke: var(--key-border-color);
+      }
+    }
+
+    /* Layer activator styles*/
+    .key:has(> a > text:is(.hold.layer-activator)), .key.held {
+      --key-color: var(--held-color);
+    }
+
   footer_text: ""
   shrink_wide_legends: 7
   style_layer_activators: true
