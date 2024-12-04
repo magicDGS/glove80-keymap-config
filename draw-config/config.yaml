@@ -44,10 +44,23 @@ draw_config:
       --text-color: #000000;
       --border-color: #000000;
       --held-color: #D1C6E9;
+      --glove80-key-color: #757575;
+      --glove80-text-color: #EEEEEE;
+      --hrm-pinky-color: #FFCDD2;
+      --hrm-ring1-color: #FFCCBC;
+      --hrm-ring2-color: #BBDEFB;
+      --hrm-middle-color: #FFECB3;
+      --hrm-index-color: #DCEDC8;
        
       /* Default key colors */
       --key-color: var(--main-color);
       --key-border-color: var(--border-color);
+
+      /* Large hold keys (bigger key-sides) */
+      --large-hold-inner-size: 40px;
+      --large-hold-inner-ry: 4;
+      --large-hold-inner-x: -20;
+      --large-hold-inner-y: -23;
     }
 
     /* Improve font-family to render properly the combining unicode symbols */
@@ -78,6 +91,16 @@ draw_config:
       translate: 0 -0.5em;
     }
 
+    /* Custom: reposition the right symbols to look like subscript */
+    use.right.symbol_right_modifier {
+      translate: -0.5em -0.5em;
+    }
+
+    /* Custom: reposition the right text to look like subscript */
+    text.right.text_right_modifier {
+      translate: -1em -0.5em;
+    }
+
     /* Custom color setup on keys and sides */
     .key {
       /* Same computed color transform as in keymap-layout-editor */
@@ -98,8 +121,68 @@ draw_config:
     }
 
     /* Layer activator styles*/
+    text.layer-activator {
+      text-decoration: none;
+    }
     .key:has(> a > text:is(.hold.layer-activator)), .key.held {
       --key-color: var(--held-color);
+    }
+
+    /* Glove80 layer specific activators color */
+    .key:is(.glove80_layer_switch) {
+      --key-color: var(--glove80-key-color);
+      text {
+        fill: var(--glove80-text-color);
+      }
+    }
+
+    /* Home-row mod colors */
+    g.layer-Base > g {
+      .key:is(.keypos-24, .keypos-31) {
+        --key-color: var(--hrm-ring2-color);
+      }
+      .key:is(.keypos-35, .keypos-44) {
+        --key-color: var(--hrm-pinky-color);
+      }
+      .key:is(.keypos-36, .keypos-43) {
+        --key-color: var(--hrm-ring1-color);
+      }
+      .key:is(.keypos-37, .keypos-42) {
+        --key-color: var(--hrm-middle-color);
+      }
+      .key:is(.keypos-38, .keypos-41) {
+        --key-color: var(--hrm-index-color);
+      }
+    }
+
+    .key.none {
+      --key-border-color: lab(from var(--border-color) max(60, calc(l * 1.2)) a b);
+      rect.key:not(.side) {
+        visibility: hidden;
+      }
+    }
+
+    /* Apply large-hold key style */
+    .key:has(> a > text:is(.hold.layer-activator)), .key.held, /* hold layer activator */
+    .key:is(.glove80_layer_switch), /* glove80 layer switch */
+    g.layer-Base > g > .key:is(.keypos-24, .keypos-35, .keypos-36, .keypos-37, .keypos-38, /* left-hand home-row mod positons from Sunaku's style layout */
+           .keypos-31, .keypos-41, .keypos-42, .keypos-43, .keypos-44 /* right-hand home-row mod positions from Sunaku's style layout */
+           )
+    {
+      text.key.hold {
+        translate: none;
+      }
+      rect.key:not(.side) {
+        fill: var(--key-inner-color);
+        ry: var(--large-hold-inner-ry);
+        x: var(--large-hold-inner-x);
+        y: var(--large-hold-inner-y);
+        width: var(--large-hold-inner-size);
+        height: var(--large-hold-inner-size);
+      }
+      text.hold {
+        font-style: italic;
+      }
     }
 
   footer_text: ""
