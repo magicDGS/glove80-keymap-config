@@ -43,33 +43,39 @@ parse_config:
     # ZMK behaviors
     "&caps_word":
       tap: Caps word
+    "&none":
+      type: none
     # Bluetooth
-    ## TODO: refine format with CSS (right label should be slightly up and inwards)
     "&bt BT_CLR":
       tap: $$mdi:bluetooth-settings$$
       right: $$mdi:close-thick$$
       hold: Clear
+      type: symbol_right_modifier
     "&bt BT_CLR_ALL":
       tap: $$mdi:bluetooth-settings$$
       right: $$mdi:asterisk$$
       hold: Clear All
+      type: symbol_right_modifier
     "&bt_0":
       tap: $$mdi:bluetooth-connect$$
-      hold: "0"
+      right: "0"
+      type: text_right_modifier
     "&bt_1":
       tap: $$mdi:bluetooth-connect$$
-      hold: "1"
+      right: "1"
+      type: text_right_modifier
     "&bt_2":
       tap: $$mdi:bluetooth-connect$$
-      hold: "2"
+      right: "2"
+      type: text_right_modifier
     "&bt_3":
       tap: $$mdi:bluetooth-connect$$
-      hold: "3"
+      right: "3"
+      type: text_right_modifier
     "&out OUT_USB":
       tap: $$mdi:usb$$
       hold: USB
     # RGB
-    ## TODO: refine format with CSS (right label should be slightly up and inwards)
     "&rgb_ug RGB_TOG":
       tap: $$mdi:lightbulb-on-outline$$
       hold: $$mdi:toggle-switch$$
@@ -80,34 +86,42 @@ parse_config:
       tap: $$mdi:lightbulb-on-outline$$
       right: "$$mdi:plus$$"
       hold: "Bright"
+      type: symbol_right_modifier
     "&rgb_ug RGB_BRD":
       tap: $$mdi:lightbulb-on-outline$$
       right: "$$mdi:minus$$"
       hold: "Bright"
+      type: symbol_right_modifier
     "&rgb_ug RGB_SAI":
       tap: $$mdi:lightbulb-on-outline$$
       right: "$$mdi:plus$$"
       hold: "Sat"
+      type: symbol_right_modifier
     "&rgb_ug RGB_SAD":
       tap: $$mdi:lightbulb-on-outline$$
       right: "$$mdi:minus$$"
       hold: "Sat"
+      type: symbol_right_modifier
     "&rgb_ug RGB_HUI":
       tap: $$mdi:lightbulb-on-outline$$
       right: "$$mdi:plus$$"
       hold: "Hue"
+      type: symbol_right_modifier
     "&rgb_ug RGB_HUD":
       tap: $$mdi:lightbulb-on-outline$$
       right: "$$mdi:minus$$"
       hold: "Hue"
+      type: symbol_right_modifier
     "&rgb_ug RGB_SPI":
       tap: "$$mdi:lightbulb-on-outline$$"
       right: "$$mdi:plus$$"
       hold: "Speed"
+      type: symbol_right_modifier
     "&rgb_ug RGB_SPD":
       tap: "$$mdi:lightbulb-on-outline$$"
       right: "$$mdi:minus$$"
       hold: "Speed"
+      type: symbol_right_modifier
     # Reset
     "&bootloader":
       tap: $$mdi:flash$$
@@ -118,8 +132,10 @@ parse_config:
     # glove80
     "&lower":
       tap: Lower
+      type: glove80_layer_switch
     "&magic LAYER_Magic 0":
       tap: Magic
+      type: glove80_layer_switch
     # Custom macros
     "&es_tilde_undead":
       tap: "~"
@@ -364,13 +380,14 @@ parse_config:
     C_VOL_DN: "$$mdi:volume-minus$$"
     C_MUTE: "$$mdi:volume-variant-off$$"
     # BRIGHTNESS (all except non-windows)
-    ## TODO: refine format with CSS (right label should be slightly up and inwards)
     C_BRI_UP:
       tap: "$$mdi:brightness-5$$"
       right: "$$mdi:plus$$"
+      type: symbol_right_modifier
     C_BRI_DN:
       tap: "$$mdi:brightness-5$$"
       right: "$$mdi:minus$$"
+      type: symbol_right_modifier
     # NUMPAD (all except non-windows)
     KP_NUM: "⇭ Num Lock"
     KP_SLASH: "÷"
