@@ -8,7 +8,7 @@ draw_config:
   key_ry: 6.0
   dark_mode: false
   n_columns: 1
-  separate_combo_diagrams: false
+  separate_combo_diagrams: true
   combo_diagrams_scale: 2
   inner_pad_w: 2.0
   inner_pad_h: 2.0
@@ -124,8 +124,16 @@ draw_config:
     text.layer-activator {
       text-decoration: none;
     }
-    .key:has(> a > text:is(.hold.layer-activator)), .key.held {
+    .key:has(> a > text:is(.hold.layer-activator)){
       --key-color: var(--held-color);
+    }
+
+    /* TODO: distighish the ones held due to layer activation and the ones on combos */
+    .key.held {
+      --key-color: var(--held-color);
+      rect.key:not(.side) {
+        visibility: hidden;
+      }
     }
 
     /* Glove80 layer specific activators color */
@@ -163,7 +171,7 @@ draw_config:
     }
 
     /* Apply large-hold key style */
-    .key:has(> a > text:is(.hold.layer-activator)), .key.held, /* hold layer activator */
+    .key:has(> a > text:is(.hold.layer-activator)), /* hold layer activator */
     .key:is(.glove80_layer_switch), /* glove80 layer switch */
     g.layer-Base > g > .key:is(.keypos-24, .keypos-35, .keypos-36, .keypos-37, .keypos-38, /* left-hand home-row mod positons from Sunaku's style layout */
            .keypos-31, .keypos-41, .keypos-42, .keypos-43, .keypos-44 /* right-hand home-row mod positions from Sunaku's style layout */
