@@ -1,0 +1,22 @@
+{
+  "name": "ZMK Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      // git clone settings
+      // TODO: use an actual version here instead of using the full path to the keymap-drawer
+      // then the installation would be, as example: keymap-drawer@0.19.0
+      "KEYMAP_DRAWER_URL": "git+https://github.com/caksoylar/keymap-drawer.git@90dfb4867aef10f7eb79348a0a9300c2f9e02aee"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "spadin.zmk-tools"
+      ],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  }
+}

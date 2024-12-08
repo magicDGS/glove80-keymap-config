@@ -60,3 +60,13 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Glori
 
 [Glorious Engrammer layout]: https://sunaku.github.io/moergo-glove80-keyboard.html
 [Tailorkey Zero layout]: https://sites.google.com/view/keyboards/glove80_tailorkey
+
+## Build locally
+
+To build locally, the following setup is available
+
+- Devcontainer with all required tooling
+- Use `just init` to initialize the required zephyr/zmk tooling
+- Use the rest of the provided `just` targets to build
+
+The `Justfile` is based on [Urob's ZMK configuration](https://github.com/urob/zmk-config) without nix support.

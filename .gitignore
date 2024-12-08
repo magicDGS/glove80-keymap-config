@@ -1,0 +1,8 @@
+# local west workspace and modules
+.west
+zephyr
+zmk
+modules
+# local build folders
+.build
+firmware
