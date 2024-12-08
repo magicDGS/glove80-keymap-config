@@ -55,6 +55,11 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Glori
 
 - Removed the Factory layer
 
+- Combos from Sunaku's [Glorious Engrammer layout] version 38:
+
+  - Alt-Tab and Ctrl-Tab on left hand (the same 2-keys as the Cursor layer with support to Cursor layer switch)
+  - Hyper and Meh key on right hand.
+
 - GitHub Actions build with west [zmk last `main`workflow](https://github.com/zmkfirmware/zmk/blob/main/.github/workflows/build.yml)
 - Use latest [Moergo ZMK firmware](https://github.com/moergo-sc/zmk) `main` version
 
