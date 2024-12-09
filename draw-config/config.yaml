@@ -307,6 +307,26 @@ parse_config:
       tap: "`"
     "&es_caret_undead":
       tap: "^"
+    # Glorious Engrammer
+    "&mod_tab LALT":
+      tap: Alt+Tab
+    "&mod_tab LGUI":
+      tap: Alt+Win
+    "&mod_tab LCTRL":
+      tap: Alt+Ctrl
+    "&mod_tab_chord LALT LAYER_Cursor":
+      tap: Alt+Tab
+      hold: Cursor
+    "&mod_tab_chord LCTRL LAYER_Cursor":
+      tap: Ctrl+Tab
+      hold: Cursor
+    # TODO: report to keymap-drawer that Meh and Hyper key combinations don't work as expected (not sure why: sticky? unicode shift mappint?)
+    "&sk LG(LA(LC(LSHFT)))":
+      tap: Hyper
+      hold: (sticky)
+    "&sk LA(LC(LSHFT))":
+      tap: Meh
+      hold: (sticky)
     ## TODO: this should be not a raw_binding but rather an alias on the keymap to simplify development
     "&kp LC(ES_C)":
       tap: Copy
