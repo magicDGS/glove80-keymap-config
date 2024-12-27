@@ -621,4 +621,6 @@ parse_config:
 
   zmk_combos: {}
   zmk_preamble: "#define KEYMAP_DRAWER"
-  zmk_additional_includes: []
+  zmk_additional_includes:
+    # TODO: maybe individual headers instead to speed up parsing?
+    - "modules/zmk-helpers/include"
