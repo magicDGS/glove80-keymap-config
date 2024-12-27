@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/moergo-sc
     - name: joelspadin
       url-base: https://github.com/joelspadin
+    - name: urob
+      url-base: https://github.com/urob
 
   projects:
     - name: zmk
@@ -14,6 +16,10 @@ manifest:
       remote: joelspadin
       revision: main
       path: modules/locales
+    - name: zmk-helpers
+      remote: urob
+      revision: main
+      path: modules/zmk-helpers
 
   self:
     path: config

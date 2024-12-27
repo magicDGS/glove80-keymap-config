@@ -92,6 +92,8 @@
                 ;
         };
         // SELECTION MACROS - Glorious Engrammer
+        // TODO: extract to includes/ge38/select_macros.dtsi (might require some configuration for delays)
+        // TODO: also should be node-free
         // select_none
         ZMK_MACRO(select_none,
             wait-ms = <1>;
@@ -103,6 +105,7 @@
 };
 
 /* Custom behavior */
+// TODO: extract to includes/tailorkey/hrm.dtsi (might require some configuration for timings as on Sunaku's keymap)
 / {
     behaviors {
 
@@ -248,6 +251,7 @@
 };
 
 /* Custom combos */
+// TODO: extract to includes/ge38/combos.dtsi (might require some configuration for which layer to set it in)
 / {
     combos {
         compatible = "zmk,combos";
@@ -282,6 +286,13 @@
     };
 };
 
+/* Include helpers here
+   NOTE: all usages of ZMK_ functions are overriden from this point on,
+   so only include modules/functions working with them
+*/
+#include <zmk-helpers/helper.h>
+
+// TODO: refactor keymap to use zmk-helper GLOVE80 layout function
 /* Keymap */
 / {
     keymap {
