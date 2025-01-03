@@ -21,6 +21,8 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #include <locale/keys_es.h>
+// include Sunaku's GE shortcuts (will be required for other GE behavior)
+#include "includes/ge38/shortcuts.h"
 
 /* Automatically generated layer name #define */
 #define LAYER_Base 0
@@ -295,12 +297,12 @@
 
         layer_Cursor {
             bindings = <
-                &none         &none             &none         &none         &none                                                                                                                        &none         &none             &none         &none         &none
-                &kp ESC       &kp RET           &kp SPACE     &kp TAB       &kp DEL       &kp INS                                                                                          &kp INS       &kp DEL       &kp TAB           &kp SPACE     &kp RET       &kp ESC
-                &kp LC(ES_E)  &sk LSHFT         &kp LC(ES_Y)  &kp LC(ES_Z)  &kp BSPC      &kp LC(ES_X)                                                                                     &kp LC(ES_X)  &kp BSPC      &kp LC(ES_Z)      &kp LC(ES_Y)  &sk RSHFT     &kp LC(ES_E)
-                &kp LC(ES_L)  &kp LGUI          &kp LALT      &kp LSHFT     &kp LCTRL     &kp LC(ES_C)                                                                                     &kp LC(ES_C)  &kp LEFT      &kp UP            &kp DOWN      &kp RIGHT     &kp LC(ES_L)
-                &kp LC(ES_J)  &kp LC(ES_A)      &none         &none         &kp LC(ES_F)  &kp LC(ES_V)    &mod_tab LALT  &mod_tab LGUI   &kp TAB            &select_none  &none  &none     &kp LC(ES_V)  &kp HOME      &kp PG_UP         &kp PG_DN     &kp END       &kp LC(ES_J)
-                &kp LC(ES_H)  &kp LC(LS(ES_G))  &none         &none         &kp LC(ES_G)                  &none          &mod_tab LCTRL  &tog LAYER_Cursor  &kp LC(ES_A)  &none  &none                   &kp LC(ES_F)  &kp LC(LS(ES_G))  &kp LC(ES_G)  &kp LC(ES_H)  &kp LG(ES_DOT)
+                &none         &none             &none         &none         &none                                                                                                                        &none         &none             &none          &none         &none
+                &kp ESC       &kp RET           &kp SPACE     &kp TAB       &kp DEL       &kp INS                                                                                          &kp INS       &kp DEL       &kp TAB           &kp SPACE      &kp RET       &kp ESC
+                &kp LC(ES_E)  &sk LSHFT         &kp _REDO     &kp _UNDO     &kp BSPC      &kp _CUT                                                                                         &kp _CUT      &kp BSPC      &kp _UNDO         &kp _REDO      &sk RSHFT     &kp LC(ES_E)
+                &kp LC(ES_L)  &kp LGUI          &kp LALT      &kp LSHFT     &kp LCTRL     &kp _COPY                                                                                        &kp _COPY     &kp LEFT      &kp UP            &kp DOWN       &kp RIGHT     &kp LC(ES_L)
+                &kp LC(ES_J)  &kp LC(ES_A)      &none         &none         &kp _FIND     &kp _PASTE    &mod_tab LALT  &mod_tab LGUI   &kp TAB            &select_none  &none  &none       &kp _PASTE    &kp HOME      &kp PG_UP         &kp PG_DN      &kp END       &kp LC(ES_J)
+                &kp LC(ES_H)  &kp _FIND_PREV    &none         &none         &kp _FIND_NEXT              &none          &mod_tab LCTRL  &tog LAYER_Cursor  &kp LC(ES_A)  &none  &none                     &kp _FIND     &kp _FIND_PREV    &kp _FIND_NEXT &kp LC(ES_H)  &kp LG(ES_DOT)
             >;
         };
 
@@ -308,9 +310,9 @@
             bindings = <
                 &none       &none         &none         &none         &none                                                                                                                 &none             &none        &none          &none         &none
                 &kp ESC     &kp RET       &kp SPACE     &kp TAB       &kp DEL       &kp INS                                                                               &ES_TILDE_UNDEAD  &ES_CARET_UNDEAD  &kp ES_HASH  &kp ES_DOLLAR  &kp ES_EXCL   &none
-                &none       &sk LSHFT     &kp LC(ES_Y)  &kp LC(ES_Z)  &kp BSPC      &none                                                                                 &kp ES_PERCENT    &kp ES_N7         &kp ES_N8    &kp ES_N9      &kp ES_COLON  &none
+                &none       &sk LSHFT     &kp _REDO     &kp _UNDO     &kp BSPC      &none                                                                                 &kp ES_PERCENT    &kp ES_N7         &kp ES_N8    &kp ES_N9      &kp ES_COLON  &none
                 &kp KP_NUM  &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL     &none                                                                                 &kp KP_PLUS       &kp ES_N4         &kp ES_N5    &kp ES_N6      &kp KP_MINUS  &none
-                &none       &kp LC(ES_A)  &none         &none         &kp LC(ES_F)  &none    &none  &none  &none                &kp ES_LT     &kp ES_GT   &kp KP_EQUAL    &kp KP_MULTIPLY   &kp ES_N1         &kp ES_N2    &kp ES_N3      &kp KP_SLASH  &none
+                &none       &kp LC(ES_A)  &none         &none         &kp _FIND     &none    &none  &none  &none                &kp ES_LT     &kp ES_GT   &kp KP_EQUAL    &kp KP_MULTIPLY   &kp ES_N1         &kp ES_N2    &kp ES_N3      &kp KP_SLASH  &none
                 &none       &none         &none         &none         &none                  &none  &none  &tog LAYER_Number    &kp KP_COMMA  &kp KP_DOT  &kp ES_N0                         &none             &none        &none          &none         &kp ES_AT
             >;
         };
@@ -319,7 +321,7 @@
             bindings = <
                 &none      &none         &none         &none         &none                                                                                                                &none          &none         &none         &none          &none
                 &kp ESC    &kp RET       &kp SPACE     &kp TAB       &kp DEL    &kp INS                                                                                 &kp C_MEDIA_HOME  &kp C_PLAY     &kp C_PREV    &kp C_NEXT    &kp C_STOP     &kp C_EJECT
-                &none      &sk LSHFT     &kp LC(ES_Y)  &kp LC(ES_Z)  &kp BSPC   &none                                                                                   &kp K_CALC        &kp F7         &kp F8        &kp F9        &kp F10        &kp F13
+                &none      &sk LSHFT     &kp _REDO     &kp _UNDO     &kp BSPC   &none                                                                                   &kp K_CALC        &kp F7         &kp F8        &kp F9        &kp F10        &kp F13
                 &kp CAPS   &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL  &none                                                                                   &kp K_WWW         &kp F4         &kp F5        &kp F6        &kp F11        &kp F14
                 &none      &kp LC(ES_A)  &none         &none         &none      &none    &none  &none  &none                  &kp C_PREV  &kp C_NEXT    &kp C_PP        &kp C_AL_FILES    &kp F1         &kp F2        &kp F3        &kp F12        &kp F15
                 &none      &none         &none         &none         &none               &none  &none  &tog LAYER_Function    &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                      &kp C_BRI_MAX  &kp C_BRI_UP  &kp C_BRI_DN  &kp C_BRI_MIN  &kp C_BRI_AUTO
