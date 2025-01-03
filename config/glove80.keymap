@@ -21,8 +21,6 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #include <locale/keys_es.h>
-// include Sunaku's GE shortcuts (will be required for other GE behavior)
-#include "includes/ge38/shortcuts.h"
 
 /* Automatically generated layer name #define */
 #define LAYER_Base 0
@@ -35,6 +33,9 @@
 
 /* Default glove80 system configuration, including key-positions */
 #include "includes/glove80/system.dtsi"
+
+// include Sunaku's GE shortcuts (will be required for other GE behavior)
+#include "includes/ge38/shortcuts.h"
 
 /* Custom macros */
 / {
