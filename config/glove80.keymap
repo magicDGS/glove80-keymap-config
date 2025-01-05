@@ -35,6 +35,8 @@
 #include "includes/glove80/system.dtsi"
 
 // include Sunaku's GE shortcuts (will be required for other GE behavior)
+// with the Windows operating system
+#define OPERATING_SYSTEM 'W'
 #include "includes/ge38/shortcuts.h"
 
 /* Custom macros */
