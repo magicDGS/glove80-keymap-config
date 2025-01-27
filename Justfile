@@ -89,19 +89,21 @@ clean-all: clean
 draw:
     #!/usr/bin/env bash
     set -euo pipefail
+    echo "Parsing keymap to draw"
     keymap -c "{{ draw_config }}/config.yaml" parse -z "{{ config }}/glove80.keymap" >"{{ draw_out }}/glove80.yaml"
+    echo "Drawing keymap"
     keymap -c "{{ draw_config }}/config.yaml" draw "{{ draw_out }}/glove80.yaml" --output "{{ draw_out }}/glove80.svg"
 
 # initialize west
 init:
     west init -l config
-    west update
+    west update --fetch-opt=--filter=blob:none
     west zephyr-export
 
 # list build targets
 list:
-    @just _parse_targets all | sed 's/,$//' | sort | column
+    @just _parse_targets all | sed 's/,*$//' | sort | column
 
 # update west
 update:
-    west update
+    west update --fetch-opt=--filter=blob:none
