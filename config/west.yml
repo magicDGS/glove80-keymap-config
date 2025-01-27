@@ -12,19 +12,19 @@ manifest:
   projects:
     - name: zmk
       remote: moergo-sc
-      revision: main
+      revision: v25.01
       import: app/west.yml
     - name: zmk-locales
       remote: joelspadin
-      revision: main
+      revision: v1.1.0
       path: modules/locales
     - name: zmk-helpers
       remote: urob
-      revision: main
+      revision: v0.1
       path: modules/zmk-helpers
     - name: zmk-keymap-utils
       remote: magicDGS 
-      revision: main
+      revision: v0.1
       path: modules/zmk-keymap-utils
 
   self:
