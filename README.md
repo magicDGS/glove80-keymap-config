@@ -25,7 +25,7 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Glori
 
 - Cursor Layer:
 
-  - Same as [Glorious Engrammer layout] version 38 (without macros for selection)
+  - Same as [Glorious Engrammer layout] version 38
   - Toggle on the same thumb cluster as [Glorious Engrammer layout] version 38
 
 - Number Layer:
