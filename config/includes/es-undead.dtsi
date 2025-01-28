@@ -1,0 +1,16 @@
+/* Undead keys for es-es locale
+*  Requires zmk-helpers.h from urob imported and keys_es.h from zmk-locale 
+*/
+
+// generic function to undead a es-es key.
+#define MAKE_ES_UNDEAD(KEY) ZMK_MACRO( \
+    KEY ## _UNDEAD, \
+    wait-ms = <1>; \
+    tap-ms = <1>; \
+    bindings = <&kp KEY &kp SPACE>; \
+)
+
+// create the undead-keys to be used
+MAKE_ES_UNDEAD(ES_GRAVE)
+MAKE_ES_UNDEAD(ES_TILDE)
+MAKE_ES_UNDEAD(ES_CARET)
