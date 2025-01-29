@@ -1,0 +1,37 @@
+/* Combo definitions for this keymap */
+// TODO: should refactor to use zmk-helpers instead and update combos
+// TODO: note that it also requires the mod_tab_chord definition
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        // Glorious Engrammer - tab switchers
+        // TODO: add to other layers that are not only the cursor one
+        combo_alt_tab_switcher {
+            timeout-ms = <50>;
+            key-positions = <POS_LH_T4 POS_LH_T1>;
+            bindings = <&mod_tab_chord LALT LAYER_Cursor>;
+            layers = <LAYER_Base>;
+        };
+        combo_ctrl_tab_switcher {
+            timeout-ms = <50>;
+            key-positions = <POS_LH_T4 POS_LH_T5>;
+            bindings = <&mod_tab_chord LCTRL LAYER_Cursor>;
+            layers = <LAYER_Base>;
+        };
+        // Glorious Engrammer - hyper & meh (sticky)
+        combo_sticky_hyper_right {
+            timeout-ms = <50>;
+            key-positions = <POS_RH_T1 POS_RH_T4>;
+            bindings = <&sk LG(LA(LC(LSHFT)))>;
+            layers = <LAYER_Base>;
+        };
+        combo_sticky_meh_right {
+            timeout-ms = <50>;
+            key-positions = <POS_RH_T4 POS_RH_T5>;
+            bindings = <&sk LA(LC(LSHFT))>;
+            layers = <LAYER_Base>;
+        };
+    };
+};
