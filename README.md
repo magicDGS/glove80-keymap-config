@@ -20,7 +20,7 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Sunak
   - Recover `ES_LT` (Spanish `LESS_THAN`) to ensure that the key is accessible in the main layer for typing and writing
   - Add `&caps_word` to the Base layer in a similar position as the `CAPS_LOCK` in a Standard keyboard
   - Remove navigation keys (Home/End/PgUp/PgDown) from base later in favor of navigation layer
-  - Add GASC Home Row Mods (HRM) implemented with the same strategy as the [Tailorkey Zero Keymap] version 1.0g
+  - Add GASC Timeless Home Row Mods (HRM) implemented as [Urob's Keymap].
   - Add also a HRM for AltGr on the `W` and `O` to support more Spanish symbols (as [Sunaku's Keymap (GE v38)])
 
 - Cursor Layer:

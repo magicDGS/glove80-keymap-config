@@ -62,139 +62,9 @@
     };
 };
 
-/* Automatically generated behavior definitions */
+/* Behavior definitions */
 / {
     behaviors {
-
-        // Homerow Mod for the left index finger - TailorKey
-        HRM_left_index: HRM_left_index {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <170>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 70 71 69>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the left middle finger - TailorKey
-        HRM_left_middy: HRM_left_middy {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <210>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 69 70 71>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the left pinky - TailorKey
-        HRM_left_pinky: HRM_left_pinky {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <260>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 9 16 17 18 19 20 21 29 30 31 32 33 42 43 44 45 60 61 62 63 28 40 41 58 59 75 76 77 79 78 52 53 54 69 70 71>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the left ring finger 1 - TailorKey
-        HRM_left_ring1: HRM_left_ring1 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <240>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 52 53 54 69 70 71>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the left ring finger 2 - TailorKey
-        HRM_left_ring2: HRM_left_ring2 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <240>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <57 56 55 72 73 74 5 6 7 8 16 17 18 19 20 28 29 30 31 32 40 41 42 43 44 58 59 60 61 62 75 76 77 78 9 21 33 45 63 79 53 54 69 70 71 52>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the right index finger - TailorKey
-        HRM_right_index: HRM_right_index {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <170>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <52 53 54 71 70 69 0 1 10 11 12 13 14 22 23 24 25 26 27 34 35 36 37 38 39 46 47 48 49 50 51 64 65 66 67 68 15 4 2 3 55 56 57 72 73 74>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the right middle finger - TailorKey
-        HRM_right_middy: HRM_right_middy {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <210>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <52 53 54 71 70 69 0 1 10 11 12 13 14 22 23 24 25 26 27 34 35 36 37 38 39 46 47 48 49 50 51 64 65 66 67 68 15 4 2 3 55 56 57 72 73 74>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the right pinky - TailorKey
-        HRM_right_pinky: HRM_right_pinky {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <260>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <52 53 54 71 70 69 0 1 10 11 12 13 14 22 23 24 25 26 27 34 35 36 37 38 39 46 47 48 49 50 51 64 65 66 67 68 15 4 2 3 55 56 57 72 73 74>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the right ring 1 - TailorKey
-        HRM_right_ring1: HRM_right_ring1 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <240>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <52 53 54 71 70 69 0 1 10 11 12 13 14 22 23 24 25 26 27 34 35 36 37 38 39 46 47 48 49 50 51 64 65 66 67 68 15 4 2 3 55 56 57 72 73 74>;
-            hold-trigger-on-release;
-        };
-
-        // Homerow Mod for the right ring 2 - TailorKey
-        HRM_right_ring2: HRM_right_ring2 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <240>;
-            bindings = <&kp>, <&kp>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-key-positions = <52 53 54 71 70 69 0 1 10 11 12 13 14 22 23 24 25 26 27 34 35 36 37 38 39 46 47 48 49 50 51 64 65 66 67 68 15 4 2 3 55 56 57 72 73 74>;
-            hold-trigger-on-release;
-        };
         // thumb_layer_access - Glorious Engrammer
         thumb: thumb_layer_access {
             compatible = "zmk,behavior-hold-tap";
@@ -213,9 +83,36 @@
 // import zmk-keymap-utils modules with WINDOWS configuration
 #define OPERATING_SYSTEM 'W'
 #include <zmk-keymap-utils/init.h>
+// select/extend behaviors
 #include <zmk-keymap-utils/select_word.dtsi>
+// urob's timeless-hrm - TODO: move to the keymap-utils module
+#include <zmk-keymap-utils/hrm/timeless.dtsi>
+
 // custom zmk-helpers relying functionality (on this repo)
 #include "includes/es-undead.dtsi"
+
+// define standard keys and key-groups (following Urob's standard)
+#include <zmk-helpers/key-labels/glove80.h>
+#define THUMBS LH0 LH1 LH2 LH3 LH4 \
+               LH5 RH0 RH1 RH2 RH3 RH4 RH5
+#define KEYS_L LC1 LC2 LC3 LC4 LC5 \
+               LN0 LN1 LN2 LN3 LN4 LN5 \
+               LT0 LT1 LT2 LT3 LT4 LT5 \
+               LT0 LT1 LT2 LT3 LT4 LT5 \
+               LM0 LM1 LM2 LM3 LM4 LM5 \
+               LB0 LB1 LB2 LB3 LB4 LB5 \
+               LF1 LF2 LF3 LF4 LF5
+#define KEYS_R RC1 RC2 RC3 RC4 RC5 \
+               RN0 RN1 RN2 RN3 RN4 RN5 \
+               RT0 RT1 RT2 RT3 RT4 RT5 \
+               RT0 RT1 RT2 RT3 RT4 RT5 \
+               RM0 RM1 RM2 RM3 RM4 RM5 \
+               RB0 RB1 RB2 RB3 RB4 RB5 \
+               RF1 RF2 RF3 RF4 RF5
+
+// create timeless-hrm
+MAKE_TIMELESS_HRM(hm_l, &kp, &kp, KEYS_R THUMBS) // &hm_l (left-hand HRM)
+MAKE_TIMELESS_HRM(hm_r, &kp, &kp, KEYS_L THUMBS) // &hm_r (right-hand HRM)
 
 /* Automatically generated keymap */
 / {
@@ -225,12 +122,12 @@
 
         layer_Base {
             bindings = <
-                &kp F1                &kp F2                     &kp F3                     &kp F4                      &kp F5                                                                                                                                                               &kp F6                       &kp F7                       &kp F8                      &kp F9                            &kp F10
-                &kp ES_IEXCL          &kp ES_N1                  &kp ES_N2                  &kp ES_N3                   &kp ES_N4                   &kp ES_N5                                                                                                                     &kp ES_N6  &kp ES_N7                    &kp ES_N8                    &kp ES_N9                   &kp ES_N0                         &kp ES_SQT
-                &kp ES_ORDM           &kp ES_Q                   &HRM_left_ring2 RALT ES_W  &kp ES_E                    &kp ES_R                    &kp ES_T                                                                                                                      &kp ES_Y   &kp ES_U                     &kp ES_I                     &HRM_right_ring2 RALT ES_O  &kp ES_P                          &kp ES_C_CEDILLA
-                &caps_word            &HRM_left_pinky LGUI ES_A  &HRM_left_ring1 LALT ES_S  &HRM_left_middy LSHFT ES_D  &HRM_left_index LCTRL ES_F  &kp ES_G                                                                                                                      &kp ES_H   &HRM_right_index RCTRL ES_J  &HRM_right_middy RSHFT ES_K  &HRM_right_ring1 LALT ES_L  &HRM_right_pinky RGUI ES_N_TILDE  &kp ES_ACUTE
-                &sk LSHFT             &kp ES_Z                   &kp ES_X                   &kp ES_C                    &kp ES_V                    &kp ES_B    &thumb LAYER_Function ESC  &kp UP                   &kp DOWN    &kp LEFT  &kp RIGHT  &kp RET                      &kp ES_N   &kp ES_M                     &kp ES_COMMA                 &kp ES_DOT                  &kp ES_MINUS                      &sk RSHFT
-                &magic LAYER_Magic 0  &kp LCTRL                  &kp LALT                   &kp LGUI                    &kp ES_LT                               &thumb LAYER_Cursor BSPC   &thumb LAYER_Number DEL  &lower      &lower    &kp TAB    &thumb LAYER_Symbol SPACE               &kp ES_GRAVE                 &kp ES_PLUS                  &kp RALT                    &kp RCTRL                         &magic LAYER_Magic 0
+                &kp F1                &kp F2            &kp F3           &kp F4            &kp F5                                                                                                                                                     &kp F6            &kp F7            &kp F8           &kp F9                 &kp F10
+                &kp ES_IEXCL          &kp ES_N1         &kp ES_N2        &kp ES_N3         &kp ES_N4         &kp ES_N5                                                                                                                     &kp ES_N6  &kp ES_N7         &kp ES_N8         &kp ES_N9        &kp ES_N0              &kp ES_SQT
+                &kp ES_ORDM           &kp ES_Q          &hm_l RALT ES_W  &kp ES_E          &kp ES_R          &kp ES_T                                                                                                                      &kp ES_Y   &kp ES_U          &kp ES_I          &hm_r RALT ES_O  &kp ES_P               &kp ES_C_CEDILLA
+                &caps_word            &hm_l LGUI ES_A   &hm_l LALT ES_S  &hm_l LSHFT ES_D  &hm_l LCTRL ES_F  &kp ES_G                                                                                                                      &kp ES_H   &hm_r RCTRL ES_J  &hm_r RSHFT ES_K  &hm_r LALT ES_L  &hm_r RGUI ES_N_TILDE  &kp ES_ACUTE
+                &sk LSHFT             &kp ES_Z          &kp ES_X         &kp ES_C          &kp ES_V          &kp ES_B    &thumb LAYER_Function ESC  &kp UP                   &kp DOWN    &kp LEFT  &kp RIGHT  &kp RET                      &kp ES_N   &kp ES_M          &kp ES_COMMA      &kp ES_DOT       &kp ES_MINUS           &sk RSHFT
+                &magic LAYER_Magic 0  &kp LCTRL         &kp LALT         &kp LGUI          &kp ES_LT                     &thumb LAYER_Cursor BSPC   &thumb LAYER_Number DEL  &lower      &lower    &kp TAB    &thumb LAYER_Symbol SPACE               &kp ES_GRAVE      &kp ES_PLUS       &kp RALT         &kp RCTRL              &magic LAYER_Magic 0
             >;
         };
 
