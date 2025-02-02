@@ -24,8 +24,7 @@ manifest:
       path: modules/zmk-helpers
     - name: zmk-keymap-utils
       remote: magicDGS
-      # TODO: pin a version once we are in version 1
-      revision: latest # using latest as we are trying out in this repo
+      revision: v0.3
       path: modules/zmk-keymap-utils
 
   self:

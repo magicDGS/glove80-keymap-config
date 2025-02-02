@@ -5,6 +5,7 @@
  * 
  * - Only implemented the ones used in this keymap.
  * - Uses zmk-helpers to implement the behavior.
+ * - Uses zmk-helpers glove80 standard positions.
  * - Added to the base layout (defined with LAYER_Base - if not defined, default to 0)
  *******************************************************/
 
@@ -25,16 +26,16 @@
 // difference with Sunaku's -> only bind to base layer
 #ifdef LAYER_Cursor
 #ifdef _A_TAB
-ZMK_COMBO(combo_alt_tab_switcher, &mod_tab_chord _A_TAB LAYER_Cursor, POS_LH_T4 POS_LH_T1, LAYER_Base, COMBO_FIRING_DECAY)
+ZMK_COMBO(combo_alt_tab_switcher, &mod_tab_chord _A_TAB LAYER_Cursor, LH2 LH5, LAYER_Base, COMBO_FIRING_DECAY)
 #endif
-ZMK_COMBO(combo_ctrl_tab_switcher, &mod_tab_chord LCTRL LAYER_Cursor, POS_LH_T4 POS_LH_T5, LAYER_Base, COMBO_FIRING_DECAY)
+ZMK_COMBO(combo_ctrl_tab_switcher, &mod_tab_chord LCTRL LAYER_Cursor, LH2 LH1, LAYER_Base, COMBO_FIRING_DECAY)
 #endif
 
 // sticky hyper/meh keys
 // difference with Sunaku's -> only bind to base layer
 // TODO: extract hyper and meh keys to zmk-keymap-utils???
-ZMK_COMBO(combo_sticky_hyper_right, &sk LG(LA(LC(LSHFT))), POS_RH_T1 POS_RH_T4, LAYER_Base, COMBO_FIRING_DECAY)
-ZMK_COMBO(combo_sticky_meh_right,   &sk LA(LC(LSHFT)),     POS_RH_T4 POS_RH_T5, LAYER_Base, COMBO_FIRING_DECAY)
+ZMK_COMBO(combo_sticky_hyper_right, &sk _HYPER, RH2 RH5, LAYER_Base, COMBO_FIRING_DECAY)
+ZMK_COMBO(combo_sticky_meh_right,   &sk _MEH,   RH2 RH1, LAYER_Base, COMBO_FIRING_DECAY)
 
 /*************************************
  * END of combos from Sunaku's Keymap
