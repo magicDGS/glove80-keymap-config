@@ -1,0 +1,3 @@
+# ignore yaml files created by the keymap-drawer here
+*.yaml
+*.yml

@@ -1,0 +1,639 @@
+draw_config:
+  key_w: 60.0
+  key_h: 56.0
+  split_gap: 30.0
+  combo_w: 28.0
+  combo_h: 26.0
+  key_rx: 6.0
+  key_ry: 6.0
+  dark_mode: false
+  n_columns: 1
+  separate_combo_diagrams: true
+  combo_diagrams_scale: 2
+  inner_pad_w: 2.0
+  inner_pad_h: 2.0
+  outer_pad_w: 30.0
+  outer_pad_h: 56.0
+  line_spacing: 1.2
+  arc_radius: 6.0
+  append_colon_to_layer_header: true
+  small_pad: 2.0
+  legend_rel_x: 0.0
+  legend_rel_y: 0.0
+  draw_key_sides: true
+  key_side_pars:
+    rel_x: 0
+    rel_y: 1
+    rel_w: 2
+    rel_h: 4
+    rx: 4
+    ry: 6
+  svg_extra_style: | #css
+    /**
+    * Styles borrowed (with adjustments) from:
+    * - https://github.com/SethMilliken/zmk-config/blob/main/keymap_drawer.config.yaml
+    * - https://github.com/englmaxi/zmk-config/blob/master/keymap-drawer/config.yaml
+    **/
+
+    :root {
+      /* smaller font-size than the keymap-drawer default */
+      --font-size: 12px;
+
+      /* Color palerte */
+      --main-color: #CCCCCC;
+      --text-color: #000000;
+      --border-color: #000000;
+      --held-color: #D1C6E9;
+      --glove80-key-color: #757575;
+      --glove80-text-color: #EEEEEE;
+      --hrm-pinky-color: #FFCDD2;
+      --hrm-ring1-color: #FFCCBC;
+      --hrm-ring2-color: #BBDEFB;
+      --hrm-middle-color: #FFECB3;
+      --hrm-index-color: #DCEDC8;
+       
+      /* Default key colors */
+      --key-color: var(--main-color);
+      --key-border-color: var(--border-color);
+
+      /* Large hold keys (bigger key-sides) */
+      --large-hold-inner-size: 40px;
+      --large-hold-inner-ry: 4;
+      --large-hold-inner-x: -20px;
+      --large-hold-inner-y: -23px;
+    }
+
+    /* Improve font-family to render properly the combining unicode symbols */
+    svg.keymap {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: var(--font-size);
+      fill: var(--text-color);
+    }
+    /* Use relative font-size for no main tap key label */
+    text.combo, text.hold, text.shifted, text.left, text.right {
+      font-size: 0.75em;
+    }
+    /* Shifted a bit bigger */
+    text.shifted {
+      font-size: 0.80em;
+      translate: 0 0.2em;
+    }
+
+    /* Reposition he AltGr labels as they are too close to the rect limit */
+    text.key.right {
+      /* Also move a bit above the main key label */
+      dominant-baseline: auto;
+      translate: -0.2em;
+    }
+
+    /* Reposition hold labels as they are too close to the key-side */
+    text.key.hold {
+      translate: 0 -0.5em;
+    }
+
+    /* Custom: reposition the right symbols to look like subscript */
+    use.right.symbol_right_modifier {
+      translate: -0.5em -0.5em;
+    }
+
+    /* Custom: reposition the right text to look like subscript */
+    text.right.text_right_modifier {
+      translate: -1em -0.5em;
+    }
+
+    /* Custom color setup on keys and sides */
+    .key {
+      /* Same computed color transform as in keymap-layout-editor */
+      --key-inner-color: lab(from var(--key-color) min(100, calc(l * 1.2)) a b);
+      --key-inner-stroke-color: lab(from var(--key-inner-color) min(80, l) a b);
+      rect {
+        fill: var(--key-color);
+        filter: none;
+      }
+      rect.key:not(.side) {
+        fill: var(--key-inner-color);
+        stroke: var(--key-inner-stroke-color);
+      }
+      /* Border color for keys */
+      rect.key.side {
+        stroke: var(--key-border-color);
+      }
+    }
+
+    /* Layer activator styles*/
+    text.layer-activator {
+      text-decoration: none;
+    }
+    .key:has(> a > text:is(.hold.layer-activator)){
+      --key-color: var(--held-color);
+    }
+
+    /* TODO: distighish the ones held due to layer activation and the ones on combos */
+    .key.held {
+      --key-color: var(--held-color);
+      rect.key:not(.side) {
+        visibility: hidden;
+      }
+    }
+
+    /* Glove80 layer specific activators color */
+    .key:is(.glove80_layer_switch) {
+      --key-color: var(--glove80-key-color);
+      text {
+        fill: var(--glove80-text-color);
+      }
+    }
+
+    /* Home-row mod colors */
+    g.layer-Base > g {
+      .key:is(.keypos-24, .keypos-31) {
+        --key-color: var(--hrm-ring2-color);
+      }
+      .key:is(.keypos-35, .keypos-44) {
+        --key-color: var(--hrm-pinky-color);
+      }
+      .key:is(.keypos-36, .keypos-43) {
+        --key-color: var(--hrm-ring1-color);
+      }
+      .key:is(.keypos-37, .keypos-42) {
+        --key-color: var(--hrm-middle-color);
+      }
+      .key:is(.keypos-38, .keypos-41) {
+        --key-color: var(--hrm-index-color);
+      }
+    }
+
+    .key.none {
+      --key-border-color: lab(from var(--border-color) max(60, calc(l * 1.2)) a b);
+      rect.key:not(.side) {
+        visibility: hidden;
+      }
+    }
+
+    /* Apply large-hold key style */
+    .key:has(> a > text:is(.hold.layer-activator)), /* hold layer activator */
+    .key:is(.glove80_layer_switch), /* glove80 layer switch */
+    g.layer-Base > g > .key:is(.keypos-24, .keypos-35, .keypos-36, .keypos-37, .keypos-38, /* left-hand home-row mod positons from Sunaku's style layout */
+           .keypos-31, .keypos-41, .keypos-42, .keypos-43, .keypos-44 /* right-hand home-row mod positions from Sunaku's style layout */
+           )
+    {
+      text.key.hold {
+        translate: none;
+      }
+      rect.key:not(.side) {
+        fill: var(--key-inner-color);
+        ry: var(--large-hold-inner-ry);
+        x: var(--large-hold-inner-x);
+        y: var(--large-hold-inner-y);
+        width: var(--large-hold-inner-size);
+        height: var(--large-hold-inner-size);
+      }
+      text.hold {
+        font-style: italic;
+      }
+    }
+
+  footer_text: ""
+  shrink_wide_legends: 7
+  style_layer_activators: true
+  glyph_tap_size: 14
+  glyph_hold_size: 12
+  glyph_shifted_size: 10
+  glyphs: {}
+parse_config:
+  preprocess: true
+  skip_binding_parsing: false
+  raw_binding_map:
+    # ZMK behaviors
+    "&caps_word":
+      tap: Caps word
+    "&none":
+      type: none
+    # Bluetooth
+    "&bt BT_CLR":
+      tap: $$mdi:bluetooth-settings$$
+      right: $$mdi:close-thick$$
+      hold: Clear
+      type: symbol_right_modifier
+    "&bt BT_CLR_ALL":
+      tap: $$mdi:bluetooth-settings$$
+      right: $$mdi:asterisk$$
+      hold: Clear All
+      type: symbol_right_modifier
+    "&bt_0":
+      tap: $$mdi:bluetooth-connect$$
+      right: "0"
+      type: text_right_modifier
+    "&bt_1":
+      tap: $$mdi:bluetooth-connect$$
+      right: "1"
+      type: text_right_modifier
+    "&bt_2":
+      tap: $$mdi:bluetooth-connect$$
+      right: "2"
+      type: text_right_modifier
+    "&bt_3":
+      tap: $$mdi:bluetooth-connect$$
+      right: "3"
+      type: text_right_modifier
+    "&out OUT_USB":
+      tap: $$mdi:usb$$
+      hold: USB
+    # RGB
+    "&rgb_ug RGB_TOG":
+      tap: $$mdi:lightbulb-on-outline$$
+      hold: $$mdi:toggle-switch$$
+    "&rgb_ug RGB_EFF":
+      tap: $$mdi:lightbulb-on-outline$$
+      hold: "Effects"
+    "&rgb_ug RGB_BRI":
+      tap: $$mdi:lightbulb-on-outline$$
+      right: "$$mdi:plus$$"
+      hold: "Bright"
+      type: symbol_right_modifier
+    "&rgb_ug RGB_BRD":
+      tap: $$mdi:lightbulb-on-outline$$
+      right: "$$mdi:minus$$"
+      hold: "Bright"
+      type: symbol_right_modifier
+    "&rgb_ug RGB_SAI":
+      tap: $$mdi:lightbulb-on-outline$$
+      right: "$$mdi:plus$$"
+      hold: "Sat"
+      type: symbol_right_modifier
+    "&rgb_ug RGB_SAD":
+      tap: $$mdi:lightbulb-on-outline$$
+      right: "$$mdi:minus$$"
+      hold: "Sat"
+      type: symbol_right_modifier
+    "&rgb_ug RGB_HUI":
+      tap: $$mdi:lightbulb-on-outline$$
+      right: "$$mdi:plus$$"
+      hold: "Hue"
+      type: symbol_right_modifier
+    "&rgb_ug RGB_HUD":
+      tap: $$mdi:lightbulb-on-outline$$
+      right: "$$mdi:minus$$"
+      hold: "Hue"
+      type: symbol_right_modifier
+    "&rgb_ug RGB_SPI":
+      tap: "$$mdi:lightbulb-on-outline$$"
+      right: "$$mdi:plus$$"
+      hold: "Speed"
+      type: symbol_right_modifier
+    "&rgb_ug RGB_SPD":
+      tap: "$$mdi:lightbulb-on-outline$$"
+      right: "$$mdi:minus$$"
+      hold: "Speed"
+      type: symbol_right_modifier
+    # Reset
+    "&bootloader":
+      tap: $$mdi:flash$$
+      hold: "Boot"
+    "&sys_reset":
+      tap: $$mdi:restart$$
+      hold: "Reset"
+    # glove80
+    "&lower":
+      tap: Lower
+      type: glove80_layer_switch
+    "&magic MAGIC 0":
+      tap: Magic
+      type: glove80_layer_switch
+    # Custom macros
+    "&ES_TILDE_UNDEAD":
+      tap: "~"
+    "&ES_GRAVE_UNDEAD":
+      tap: "`"
+    "&ES_CARET_UNDEAD":
+      tap: "^"
+    # Sunaky Keymap (v38)
+    "&mod_tab LALT":
+      tap: Alt+Tab
+    "&mod_tab LGUI":
+      tap: Alt+Win
+    "&mod_tab LCTRL":
+      tap: Alt+Ctrl
+    "&mod_tab_chord _A_TAB NAV":
+      tap: Alt+Tab
+      hold: Nav
+    "&mod_tab_chord LCTRL NAV":
+      tap: Ctrl+Tab
+      hold: Nav
+    # TODO: report to keymap-drawer that Meh and Hyper key combinations don't work as expected (not sure why: sticky? unicode shift mappint?)
+    "&sk _HYPER":
+      tap: Hyper
+      hold: (sticky)
+    "&sk _MEH":
+      tap: Meh
+      hold: (sticky)
+    ## shortcuts
+    ## TODO: could it be possible to move them to the keycode map somehow?
+    ## TODO: we should maybe wrap into a header to avoid parsing the keycodes in that case?
+    "&kp _COPY":
+      tap: Copy
+    "&kp _PASTE":
+      tap: Paste
+    "&kp _CUT":
+      tap: Cut
+    "&kp _UNDO":
+      tap: Undo
+    "&kp _REDO":
+      tap: Redo
+    "&kp _FIND":
+      tap: Find
+    "&kp _FIND_NEXT":
+      tap: Find Next
+    "&kp _FIND_PREV":
+      tap: Find Prev
+    "&kp _FIND_REPLACE":
+      tap: Find & Replace
+    "&select_all":
+      tap: Select all
+    "&select_none":
+      tap: Select none
+    "&select_word":
+      tap: Select word
+    "&select_line":
+      tap: Select line
+    "&extend_word":
+      tap: Extend word
+    "&extend_line":
+      tap: Extend line
+    "&kp _B_SEARCH_BAR":
+      tap: Search bar
+    "&kp _B_URL_BAR":
+      tap: URL bar
+    "&kp _B_DOWNLOADS":
+      tap: Downloads
+    "&kp _EMOJI":
+      tap: Emoji Picker
+    # other customizations
+    "&kp LS(TAB)":
+      tap: $$mdi:keyboard-tab-reverse$$
+  sticky_label: "(sticky)"
+  toggle_label: $$mdi:toggle-switch$$
+  tap_toggle_label: tap-toggle
+  trans_legend:
+    t: ▽
+    type: trans
+  mark_alternate_layer_activators: false
+  modifier_fn_map:
+    left_ctrl: Ctrl
+    right_ctrl: Ctrl
+    left_shift: Shift
+    right_shift: Shift
+    left_alt: Alt
+    right_alt: AltGr
+    left_gui: Win
+    right_gui: Win
+    keycode_combiner: "{mods}+ {key}"
+    mod_combiner: "{mod_1}+{mod_2}"
+    special_combinations:
+      left_ctrl+left_alt+left_gui+left_shift: Hyper
+      left_ctrl+left_alt+left_shift: Meh
+  zmk_remove_keycode_prefix:
+    # remove the ES_ prefix as they are in use
+    - ES_
+  zmk_keycode_map:
+    # SPANISH KEYS WITH SHIFTED/ALTGR SYMBOLS
+    N1:
+      tap: 1
+      shifted: "!"
+      right: "|"
+    N2:
+      tap: 2
+      shifted: '"'
+      right: "@"
+    N3:
+      tap: 3
+      shifted: "·"
+      right: "#"
+    N4:
+      tap: 4
+      shifted: "$"
+      right: "◌̃ "
+    N5:
+      tap: 5
+      shifted: "%"
+      right: "€"
+    N6:
+      tap: 6
+      shifted: "&"
+      right: "¬"
+    N7:
+      tap: 7
+      shifted: "/"
+    N8:
+      tap: 8
+      shifted: "("
+    N9:
+      tap: 9
+      shifted: ")"
+    N0:
+      tap: 0
+      shifted: "="
+    EXCLAMATION: "!"
+    EXCL: "!"
+    AT_SIGN: "@"
+    AT: "@"
+    HASH: "#"
+    POUND: "#"
+    DOLLAR: $
+    DLLR: $
+    PERCENT: "%"
+    PRCNT: "%"
+    CARET: ^
+    AMPERSAND: "&"
+    AMPS: "&"
+    ASTERISK: "*"
+    ASTRK: "*"
+    STAR: "*"
+    LEFT_PARENTHESIS: (
+    LPAR: (
+    RIGHT_PARENTHESIS: )
+    RPAR: )
+    EQUAL: "="
+    PLUS:
+      tap: +
+      shifted: "*"
+      right: "]"
+    MINUS: "-"
+    UNDERSCORE: _
+    UNDER: _
+    SLASH: /
+    FSLH: /
+    QUESTION: "?"
+    QMARK: "?"
+    BACKSLASH: \
+    BSLH: \
+    PIPE: "|"
+    NON_US_BACKSLASH: \
+    PIPE2: "|"
+    NON_US_BSLH: "|"
+    SEMICOLON: ;
+    SEMI: ;
+    COLON: ":"
+    SINGLE_QUOTE:
+      tap: "'"
+      shifted: "?"
+    SQT:
+      tap: "'"
+      shifted: "?"
+    APOSTROPHE: "'"
+    APOS: "'"
+    DOUBLE_QUOTES: '"'
+    DQT: '"'
+    COMMA:
+      tap: ","
+      shifted: ";"
+    LESS_THAN: <
+    LT:
+      tap: "<"
+      shifted: ">"
+    PERIOD:
+      tap: "."
+      shifted: ":"
+    DOT:
+      tap: "."
+      shifted: ":"
+    GREATER_THAN: ">"
+    GT: ">"
+    LEFT_BRACKET: "["
+    LBKT: "["
+    LEFT_BRACE: "{"
+    LBRC: "{"
+    RIGHT_BRACKET: "]"
+    RBKT: "]"
+    RIGHT_BRACE: "}"
+    RBRC: "}"
+    GRAVE:
+      tap: "◌̀ "
+      shifted: "◌̂ "
+      right: "["
+    TILDE: "~"
+    NON_US_HASH: "#"
+    NUHS: "#"
+    TILDE2: "~"
+    C_CEDILLA:
+      tap: "Ç"
+      right: "}"
+    N_TILDE: "Ñ"
+    IEXCL:
+      tap: "¡"
+      shifted: "¿"
+    ORDM:
+      tap: "º"
+      shifted: "ª"
+      right: '\'
+    ACUTE:
+      tap: "◌́ "
+      shifted: "◌̈ "
+      right: "{"
+    # MODIFIERS
+    LGUI: ⊞ Win
+    RGUI: ⊞ Win
+    LCTRL: ⎈ Ctrl
+    RCTRL: ⎈ Ctrl
+    LALT: ⎇ Alt
+    RALT: ⎇ AltGr
+    LSHFT: ⇧ Shift
+    RSHFT: ⇧ Shift
+    # NAVIGATION
+    LEFT: "$$mdi:arrow-left$$"
+    UP: "$$mdi:arrow-up$$"
+    RIGHT: "$$mdi:arrow-right$$"
+    DOWN: "$$mdi:arrow-down$$"
+    LEFT_ARROW: "$$mdi:arrow-left$$"
+    UP_ARROW: "$$mdi:arrow-up$$"
+    RIGHT_ARROW: "$$mdi:arrow-right$$"
+    DOWN_ARROW: "$$mdi:arrow-down$$"
+    ESC: "Esc"
+    PG_UP: " PgUp"
+    PAGE_UP: "PgUp"
+    PG_DN: "PgDn"
+    PAGE_DOWN: "PgDn"
+    HOME: "⇱ Home"
+    END: "⇲ End"
+    # EDITING
+    TAB: "$$mdi:keyboard-tab$$"
+    BSPC: "$$mdi:backspace-outline$$"
+    DEL: "$$mdi:backspace-reverse-outline$$"
+    SPACE: "$$mdi:keyboard-space$$"
+    RET: "$$mdi:keyboard-return$$"
+    INS: "Ins"
+    # LOCK (no numpad)
+    CAPS: "⇪ Caps Lock"
+    # MEDIA (all except non-windows)
+    C_PLAY: "$$mdi:play$$"
+    C_PAUSE: "$$mdi:pause$$"
+    C_PP: "$$mdi:play-pause$$"
+    C_STOP: "$$mdi:stop$$"
+    C_PREV: "$$mdi:skip-previous$$"
+    C_NEXT: "$$mdi:skip-next$$"
+    C_VOL_UP: "$$mdi:volume-plus$$"
+    C_VOL_DN: "$$mdi:volume-minus$$"
+    C_MUTE: "$$mdi:volume-variant-off$$"
+    # BRIGHTNESS (all except non-windows)
+    C_BRI_UP:
+      tap: "$$mdi:brightness-5$$"
+      right: "$$mdi:plus$$"
+      type: symbol_right_modifier
+    C_BRI_DN:
+      tap: "$$mdi:brightness-5$$"
+      right: "$$mdi:minus$$"
+      type: symbol_right_modifier
+    # NUMPAD (all except non-windows)
+    KP_NUM: "⇭ Num Lock"
+    KP_SLASH: "÷"
+    KP_MULTIPLY: "×"
+    KP_MINUS: "−"
+    KP_PLUS: "+"
+    KP_ENTER: Enter
+    KP_N0:
+      tap: "0"
+      shifted: "INS"
+    KP_N1:
+      tap: "1"
+      shifted: "END"
+    KP_N2:
+      tap: "2"
+      shifted: "$$mdi:arrow-down$$"
+    KP_N3:
+      tap: "3"
+      shifted: "PG UP"
+    KP_N4:
+      tap: "4"
+      shifted: "$$mdi:arrow-left$$"
+    KP_N5:
+      tap: "5"
+    KP_N6:
+      tap: "6"
+      shifted: "$$mdi:arrow-right$$"
+    KP_N7:
+      tap: "7"
+      shifted: "HOME"
+    KP_N8:
+      tap: "8"
+      shifted: "$$mdi:arrow-up$$"
+    KP_N9:
+      tap: "9"
+      shifted: "PG DN"
+    KP_DOT:
+      tap: "."
+      shifted: "DEL"
+    # LOWER LAYER (most likely unused)
+    PAUSE_BREAK:
+      tap: PAUSE
+      hold: BREAK
+    SCROLLLOCK: "Scroll Lock"
+    SLCK: "Scroll Lock"
+    PRINTSCREEN: "PrtScr"
+    PSCRN: "PrtScr"
+    K_APP: "≣ Menu"
+
+  zmk_combos: {}
+  zmk_preamble: "#define KEYMAP_DRAWER"
+  zmk_additional_includes:
+    - "modules/zmk-helpers/include"
+    - "modules/zmk-keymap-utils/include/"

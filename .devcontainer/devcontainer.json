@@ -12,7 +12,8 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "spadin.zmk-tools"
+        "spadin.zmk-tools",
+        "ruschaaf.extended-embedded-languages"
       ],
       "settings": {
         "terminal.integrated.shell.linux": "/bin/bash"
