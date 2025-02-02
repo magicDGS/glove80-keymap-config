@@ -1,37 +1,41 @@
 /* Combo definitions for this keymap */
-// TODO: should refactor to use zmk-helpers instead and update combos
-// TODO: note that it also requires the mod_tab_chord definition
 
-/ {
-    combos {
-        compatible = "zmk,combos";
+/********************************************************
+ * Combo defintions from Sunaku's Keymap (v38).
+ * 
+ * - Only implemented the ones used in this keymap.
+ * - Uses zmk-helpers to implement the behavior.
+ * - Added to the base layout (defined with LAYER_Base - if not defined, default to 0)
+ *******************************************************/
 
-        // Glorious Engrammer - tab switchers
-        // TODO: add to other layers that are not only the cursor one
-        combo_alt_tab_switcher {
-            timeout-ms = <50>;
-            key-positions = <POS_LH_T4 POS_LH_T1>;
-            bindings = <&mod_tab_chord LALT LAYER_Cursor>;
-            layers = <LAYER_Base>;
-        };
-        combo_ctrl_tab_switcher {
-            timeout-ms = <50>;
-            key-positions = <POS_LH_T4 POS_LH_T5>;
-            bindings = <&mod_tab_chord LCTRL LAYER_Cursor>;
-            layers = <LAYER_Base>;
-        };
-        // Glorious Engrammer - hyper & meh (sticky)
-        combo_sticky_hyper_right {
-            timeout-ms = <50>;
-            key-positions = <POS_RH_T1 POS_RH_T4>;
-            bindings = <&sk LG(LA(LC(LSHFT)))>;
-            layers = <LAYER_Base>;
-        };
-        combo_sticky_meh_right {
-            timeout-ms = <50>;
-            key-positions = <POS_RH_T4 POS_RH_T5>;
-            bindings = <&sk LA(LC(LSHFT))>;
-            layers = <LAYER_Base>;
-        };
-    };
-};
+//
+// COMBO_FIRING_DECAY defines how much time you have left (milliseconds)
+// after pressing the first key in a ZMK combo to finish the whole chord.
+//
+#ifndef COMBO_FIRING_DECAY
+#define COMBO_FIRING_DECAY 50
+#endif
+
+// define the base layer for the combos if none defined
+#ifndef LAYER_Base
+#define LAYER_Base 0
+#endif
+
+// cursor-layer alt/cntrl tab switcher
+// difference with Sunaku's -> only bind to base layer
+#ifdef LAYER_Cursor
+#ifdef _A_TAB
+ZMK_COMBO(combo_alt_tab_switcher, &mod_tab_chord _A_TAB LAYER_Cursor, POS_LH_T4 POS_LH_T1, LAYER_Base, COMBO_FIRING_DECAY)
+#endif
+ZMK_COMBO(combo_ctrl_tab_switcher, &mod_tab_chord LCTRL LAYER_Cursor, POS_LH_T4 POS_LH_T5, LAYER_Base, COMBO_FIRING_DECAY)
+#endif
+
+// sticky hyper/meh keys
+// difference with Sunaku's -> only bind to base layer
+// TODO: extract hyper and meh keys to zmk-keymap-utils???
+ZMK_COMBO(combo_sticky_hyper_right, &sk LG(LA(LC(LSHFT))), POS_RH_T1 POS_RH_T4, LAYER_Base, COMBO_FIRING_DECAY)
+ZMK_COMBO(combo_sticky_meh_right,   &sk LA(LC(LSHFT)),     POS_RH_T4 POS_RH_T5, LAYER_Base, COMBO_FIRING_DECAY)
+
+/*************************************
+ * END of combos from Sunaku's Keymap
+ *************************************/

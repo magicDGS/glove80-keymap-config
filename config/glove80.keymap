@@ -77,9 +77,6 @@
     };
 };
 
-// import combos
-#include "includes/combos.dtsi"
-
 // import zmk-keymap-utils modules with WINDOWS configuration
 #define OPERATING_SYSTEM 'W'
 #include <zmk-keymap-utils/init.h>
@@ -113,6 +110,9 @@
 // create timeless-hrm
 MAKE_TIMELESS_HRM(hm_l, &kp, &kp, KEYS_R THUMBS) // &hm_l (left-hand HRM)
 MAKE_TIMELESS_HRM(hm_r, &kp, &kp, KEYS_L THUMBS) // &hm_r (right-hand HRM)
+
+// include our combos (implemented with zmk-helpers and zmk-keymap-utils)
+#include "includes/combos.dtsi"
 
 /* Automatically generated keymap */
 / {
