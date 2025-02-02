@@ -110,12 +110,12 @@ MAKE_TIMELESS_HRM(hm_r, &kp, &kp, KEYS_L THUMBS) // &hm_r (right-hand HRM)
 
         Lower {
             bindings = <
-                &kp C_BRI_DN      &kp C_BRI_UP  &kp C_PREV      &kp C_NEXT      &kp C_PP                                                                                                       &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &none            &kp PAUSE_BREAK
-                &kp ES_EQUAL      &none         &none           &none           &none            &kp _HOME                                                                        &kp ES_LPAR   &kp KP_NUM  &kp KP_EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PRINTSCREEN
-                &kp TAB           &none         &none           &kp UP_ARROW    &none            &kp _END                                                                         &kp ES_RPAR   &kp KP_N7   &kp KP_N8     &kp KP_N9     &kp KP_MINUS     &kp SCROLLLOCK
-                &kp ESC           &none         &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PG_UP                                                                       &kp ES_PRCNT  &kp KP_N4   &kp KP_N5     &kp KP_N6     &kp KP_PLUS      &none
-                &ES_GRAVE_UNDEAD  &kp K_APP     &none           &kp F11         &kp F12          &kp PG_DN    &tog FN  &none        &none         &none       &none  &none       &kp ES_COMMA  &kp KP_N1   &kp KP_N2     &kp KP_N3     &kp KP_ENTER     &kp PAGE_UP
-                &magic MAGIC 0    &kp CAPS      &kp INS         &kp F11         &kp F12                       &tog NAV    &tog NUM  &tog LOWER    &tog LOWER  &none  &tog SYM                  &kp KP_N0   &kp KP_N0     &kp KP_DOT    &kp KP_ENTER     &kp PAGE_DOWN
+                &kp C_BRI_DN      &kp C_BRI_UP  &kp C_PREV  &kp C_NEXT  &kp C_PP                                                                                                 &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &none            &kp PAUSE_BREAK
+                &kp ES_EQUAL      &none         &none       &none       &none      &kp _HOME                                                                       &kp ES_LPAR   &kp KP_NUM  &kp KP_EQUAL  &kp KP_SLASH  &kp KP_MULTIPLY  &kp PSCRN
+                &kp TAB           &none         &none       &kp UP      &none      &kp _END                                                                        &kp ES_RPAR   &kp KP_N7   &kp KP_N8     &kp KP_N9     &kp KP_MINUS     &kp SLCK
+                &kp ESC           &none         &kp LEFT    &kp DOWN    &kp RIGHT  &kp PG_UP                                                                       &kp ES_PRCNT  &kp KP_N4   &kp KP_N5     &kp KP_N6     &kp KP_PLUS      &none
+                &ES_GRAVE_UNDEAD  &kp K_APP     &none       &kp F11     &kp F12    &kp PG_DN    &tog FN  &none        &none         &none       &none  &none       &kp ES_COMMA  &kp KP_N1   &kp KP_N2     &kp KP_N3     &kp KP_ENTER     &kp PG_UP
+                &magic MAGIC 0    &kp CAPS      &kp INS     &kp F11     &kp F12                 &tog NAV    &tog NUM  &tog LOWER    &tog LOWER  &none  &tog SYM                  &kp KP_N0   &kp KP_N0     &kp KP_DOT    &kp KP_ENTER     &kp PG_DN
             >;
         };
 
