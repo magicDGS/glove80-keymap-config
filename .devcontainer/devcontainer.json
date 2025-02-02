@@ -4,9 +4,9 @@
     "dockerfile": "Dockerfile",
     "args": {
       // git clone settings
-      // TODO: use an actual version here instead of using the full path to the keymap-drawer
-      // then the installation would be, as example: keymap-drawer@0.19.0
-      "KEYMAP_DRAWER_URL": "git+https://github.com/caksoylar/keymap-drawer.git@90dfb4867aef10f7eb79348a0a9300c2f9e02aee"
+      // keymap-drawer to install: either a version such keymap-drawer@=={version}
+      // or a git URL with a commit/branch from the repo such git+https://github.com/caksoylar/keymap-drawer.git@${commit_hash}
+      "KEYMAP_DRAWER_URL": "keymap-drawer==0.20.0"
     }
   },
   "customizations": {
