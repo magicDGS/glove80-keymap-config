@@ -297,69 +297,80 @@ parse_config:
     "&lower":
       tap: Lower
       type: glove80_layer_switch
-    "&magic LAYER_Magic 0":
+    "&magic MAGIC 0":
       tap: Magic
       type: glove80_layer_switch
     # Custom macros
-    "&es_tilde_undead":
+    "&ES_TILDE_UNDEAD":
       tap: "~"
-    "&es_grave_undead":
+    "&ES_GRAVE_UNDEAD":
       tap: "`"
-    "&es_caret_undead":
+    "&ES_CARET_UNDEAD":
       tap: "^"
-    # Glorious Engrammer
+    # Sunaky Keymap (v38)
     "&mod_tab LALT":
       tap: Alt+Tab
     "&mod_tab LGUI":
       tap: Alt+Win
     "&mod_tab LCTRL":
       tap: Alt+Ctrl
-    "&mod_tab_chord LALT LAYER_Cursor":
+    "&mod_tab_chord _A_TAB NAV":
       tap: Alt+Tab
-      hold: Cursor
-    "&mod_tab_chord LCTRL LAYER_Cursor":
+      hold: Nav
+    "&mod_tab_chord LCTRL NAV":
       tap: Ctrl+Tab
-      hold: Cursor
+      hold: Nav
     # TODO: report to keymap-drawer that Meh and Hyper key combinations don't work as expected (not sure why: sticky? unicode shift mappint?)
-    "&sk LG(LA(LC(LSHFT)))":
+    "&sk _HYPER":
       tap: Hyper
       hold: (sticky)
-    "&sk LA(LC(LSHFT))":
+    "&sk _MEH":
       tap: Meh
       hold: (sticky)
-    ## TODO: this should be not a raw_binding but rather an alias on the keymap to simplify development
-    "&kp LC(ES_C)":
+    ## shortcuts
+    ## TODO: could it be possible to move them to the keycode map somehow?
+    ## TODO: we should maybe wrap into a header to avoid parsing the keycodes in that case?
+    "&kp _COPY":
       tap: Copy
-    "&kp LC(ES_V)":
+    "&kp _PASTE":
       tap: Paste
-    "&kp LC(ES_X)":
+    "&kp _CUT":
       tap: Cut
-    "&kp LC(ES_Z)":
+    "&kp _UNDO":
       tap: Undo
-    "&kp LC(ES_Y)":
+    "&kp _REDO":
       tap: Redo
-    "&kp LC(ES_F)":
+    "&kp _FIND":
       tap: Find
-    "&kp LC(ES_G)":
+    "&kp _FIND_NEXT":
       tap: Find Next
-    "&kp LC(LS(ES_G))":
+    "&kp _FIND_PREV":
       tap: Find Prev
-    "&kp LC(ES_H)":
-      tap: Find and Replace
-    "&kp LC(ES_A)":
+    "&kp _FIND_REPLACE":
+      tap: Find & Replace
+    "&select_all":
       tap: Select all
     "&select_none":
       tap: Select none
-    "&kp LC(ES_E)":
+    "&select_word":
+      tap: Select word
+    "&select_line":
+      tap: Select line
+    "&extend_word":
+      tap: Extend word
+    "&extend_line":
+      tap: Extend line
+    "&kp _B_SEARCH_BAR":
       tap: Search bar
-    "&kp LC(ES_L)":
+    "&kp _B_URL_BAR":
       tap: URL bar
-    "&kp LC(ES_J)":
+    "&kp _B_DOWNLOADS":
       tap: Downloads
+    "&kp _EMOJI":
+      tap: Emoji Picker
+    # other customizations
     "&kp LS(TAB)":
       tap: $$mdi:keyboard-tab-reverse$$
-    "&kp LG(ES_DOT)":
-      tap: Emoji Picker
   sticky_label: "(sticky)"
   toggle_label: $$mdi:toggle-switch$$
   tap_toggle_label: tap-toggle
@@ -622,5 +633,5 @@ parse_config:
   zmk_combos: {}
   zmk_preamble: "#define KEYMAP_DRAWER"
   zmk_additional_includes:
-    # TODO: maybe individual headers instead to speed up parsing?
     - "modules/zmk-helpers/include"
+    - "modules/zmk-keymap-utils/include/"
