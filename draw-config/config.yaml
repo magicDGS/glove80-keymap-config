@@ -293,6 +293,39 @@ parse_config:
     "&sys_reset":
       tap: $$mdi:restart$$
       hold: "Reset"
+    # Mouse emulation
+    # TODO: change after https://github.com/caksoylar/keymap-drawer/issues/143
+    # TODO: use icons?
+    "&msc SCRL_LEFT":
+      tap: Wheel left
+    "&msc SCRL_RIGHT":
+      tap: Wheel right
+    "&msc SCRL_UP":
+      tap: Wheel up
+    "&msc SCRL_DOWN":
+      tap: Wheel down
+    "&mmv MOVE_LEFT":
+      tap: $$mdi:arrow-left$$
+      hold: (Mouse)
+    "&mmv MOVE_RIGHT":
+      tap: $$mdi:arrow-right$$
+      hold: (Mouse)
+    "&mmv MOVE_UP":
+      tap: $$mdi:arrow-up$$
+      hold: (Mouse)
+    "&mmv MOVE_DOWN":
+      tap: $$mdi:arrow-down$$
+      hold: (Mouse)
+    "&mkp RCLK":
+      tap: Right click
+    "&mkp LCLK":
+      tap: Left click
+    "&mkp MCLK":
+      tap: Middle click
+    "&mkp MB4":
+      tap: Mouse button 4
+    "&mkp MB5":
+      tap: Mouse button 5
     # glove80
     "&lower":
       tap: Lower

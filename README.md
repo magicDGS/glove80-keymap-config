@@ -45,6 +45,9 @@ A QWERTY-based layout for Spanish OS layout with layer functionality from [Sunak
   - Toggle on the same thumb cluster as [Sunaku's Keymap (GE v38)]
   - Uses macros for dead-keys to make them type on first key-press ("undead" keys)
 
+- Mouse Layer:
+  - Same as [Sunaku's Keymap (v41)] without the speed scaling
+
 - Lower Layer:
 
   - Toggle in the same thumb/layer activation position the layer lock (as [Sunaku's Keymap (GE v38)])
@@ -78,5 +81,6 @@ The `Justfile` is based on [Urob's Keymap] without nix support.
 
 
 [Sunaku's Keymap (GE v38)]: https://github.com/sunaku/glove80-keymaps/tree/v38
+[Sunaku's Keymap (v41)]: https://github.com/sunaku/glove80-keymaps/tree/v41
 [Urob's Keymap]: https://github.com/urob/zmk-config
 [Tailorkey Zero Keymap]: https://sites.google.com/view/keyboards/glove80_tailorkey
